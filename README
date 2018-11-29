@@ -1,3 +1,11 @@
 TODO
 
--> research perror/strerror, errno variable
+> research perror/strerror, errno variable
+> retour d'erreur propre de la fonction get_row
+> usage du main si pas d'arg
+
+
+
+
+//atexit
+> remove debug

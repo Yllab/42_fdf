@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:02:29 by hbally            #+#    #+#              #
-#    Updated: 2018/11/29 14:50:05 by hbally           ###   ########.fr        #
+#    Updated: 2018/11/29 20:14:02 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME			=	fdf
 
 SRCSDIR   		=	srcs
 
-SRCS			:=	$(SRCSDIR)/main.c
+SRCS			:=	$(SRCSDIR)/main.c			\
+					$(SRCSDIR)/get_input.c		\
+					$(SRCSDIR)/get_next_line.c	\
 
 OBJSDIR   		=	objs
 
