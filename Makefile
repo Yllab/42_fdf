@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 14:02:29 by hbally            #+#    #+#              #
-#    Updated: 2018/11/29 13:35:54 by hbally           ###   ########.fr        #
+#    Updated: 2018/11/29 14:43:36 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,22 +35,21 @@ CC				=	gcc
 
 all				:	$(NAME)
 
-$(NAME)			:	compile_libs $(OBJS) 
-					$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJS)
-
-.PHONY			:	compile_libs
-compile_libs	:	
+$(NAME)			: 	$(OBJS)
 					make -C minilibx_macos/
 					make -C libft/
+					$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJS)
 
 $(OBJS)			: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
 					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+.PHONY			:	clean
 clean			:
 					rm -f $(OBJS)
 					make clean -C minilibx_macos/
 					make clean -C libft/
 
+.PHONY			:	fclean
 fclean			:	clean
 					rm -f $(NAME)
 					make fclean -C libft/
