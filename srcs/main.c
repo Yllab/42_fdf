@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/11/29 20:21:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/11/30 13:23:51 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,22 @@
 
 #include "mlx.h"
 
-//debug
-#include <stdio.h>
 int			main(int argc, char **argv)
 {
 	int		fd;
-	t_list	*map_raw;
-
-	//TODO Usage
+	void	*id;
+	t_list	*map;
+	
 	if (argc != 2)
 		return (0);	
 
-	fd = open(argv[1], O_RDONLY);
-	map_raw = get_input(fd);
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+		return (0);
 
-	int i;
-	while (map_raw->next != NULL)
-	{
-		i = 0;
-		while (i < (int)(map_raw->content_size))
-		{
-			printf("%d ", *(int*)(map_raw->content + i));
-			i++;
-		}
-		map_raw++;
-	}
-	return (-1);
+	id = mlx_init();
+	if (!id)
+		return (0);
+	map = get_input(fd);
+
+	return (0);
 }

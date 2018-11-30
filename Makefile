@@ -5,55 +5,64 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/06 14:02:29 by hbally            #+#    #+#              #
-#    Updated: 2018/11/29 20:14:02 by hbally           ###   ########.fr        #
+#    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
+#    Updated: 2018/11/30 09:40:34 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	fdf	
+NAME				=	fdf	
 
-SRCSDIR   		=	srcs
+BINDIR				=	bin
 
-SRCS			:=	$(SRCSDIR)/main.c			\
-					$(SRCSDIR)/get_input.c		\
-					$(SRCSDIR)/get_next_line.c	\
+PROJDIR				=	~/dev/42_fdf
 
-OBJSDIR   		=	objs
+SRCSDIR   			=	srcs
 
-OBJS  			:= 	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
+SRCS			   :=	$(SRCSDIR)/main.c			\
+						$(SRCSDIR)/get_input.c		\
+						$(SRCSDIR)/get_next_line.c	\
 
-INCLUDES		=   -I libft/includes 			\
-					-I includes					\
-					-I minilibx_macos			\
+OBJSDIR   			=	objs
 
-LIBS			=	-L libft/ -lft				\
-					-L minilibx_macos/ -lmlx 	\
-					-framework OpenGL			\
-					-framework AppKit
+OBJS  			   :=	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 
-CFLAGS			+=	-Wall -Werror -Wextra
+INCLUDES			=   -I libft/includes 			\
+						-I includes					\
+						-I minilibx_macos			\
 
-CC				=	gcc
+LIBS				=	-L libft/ -lft				\
+						-L minilibx_macos/ -lmlx 	\
+						-framework OpenGL			\
+						-framework AppKit
 
-all				:	$(NAME)
+CFLAGS			   +=	-Wall -Werror -Wextra
 
-$(NAME)			: 	$(OBJS)
-					make -C minilibx_macos/
-					make -C libft/
-					$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJS)
+CC					=	gcc
 
-$(OBJS)			: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
-					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+all					:	$(BINDIR)/$(NAME)
 
-.PHONY			:	clean
-clean			:
-					rm -f $(OBJS)
-					make clean -C minilibx_macos/
-					make clean -C libft/
+$(BINDIR)/$(NAME)	: 	$(OBJS)
+						make -C minilibx_macos/
+						make -C libft/
+						$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJS)
 
-.PHONY			:	fclean
-fclean			:	clean
-					rm -f $(NAME)
-					make fclean -C libft/
+.PHONY				:	run
+run					:	$(BINDIR)/$(NAME)
+						clear
+						@$(PROJDIR)/$(BINDIR)/fdf $(PROJDIR)/maps/test.fdf
 
-re				:	fclean all
+$(OBJS)				: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
+						$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+.PHONY				:	clean
+clean				:
+						rm -f $(OBJS)
+						make clean -C minilibx_macos/
+						make clean -C libft/
+
+.PHONY				:	fclean
+fclean				:	clean
+						rm -f $(BINDIR)/$(NAME)
+						make fclean -C libft/
+
+re					:	fclean all

@@ -1,7 +1,7 @@
 TODO
 
 > research perror/strerror, errno variable
-> retour d'erreur propre de la fonction get_row
+> retour d'erreur propre/consistent 
 > usage du main si pas d'arg
 
 
@@ -9,3 +9,5 @@ TODO
 
 //atexit
 > remove debug
+> remove test rule from makefile
+> rm fdf_sample from bin/
