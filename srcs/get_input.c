@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 19:47:24 by hbally            #+#    #+#             */
-/*   Updated: 2018/11/30 13:21:27 by hbally           ###   ########.fr       */
+/*   Updated: 2018/11/30 19:33:40 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 #include "libft.h"
 #include "fdf.h"
 
-// TODO ERROR
+static	void	ft_tabfree(char **tab, int i)
+{
+	while (i--)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+	}
+	free(tab);
+	tab = NULL;
+}
 
 static int		tab_len(char **tab)
 {
@@ -31,6 +40,12 @@ static int		tab_len(char **tab)
 	return (len);
 }
 
+static void		free_row(void *row, size_t row_size)
+{
+	ft_memdel(&row);
+	row_size = 0;
+}
+
 static int		get_row(char *line, int **result)
 {
 	int			i;
@@ -41,42 +56,48 @@ static int		get_row(char *line, int **result)
 	len = tab_len(split_result);
 	if (split_result && len)
 	{
-		*result = ft_memalloc(len * sizeof(int));
-		if (!result)
-			return (-1);
-		i = 0;
-		while (split_result[i] != NULL)
+		*result = (int*)ft_memalloc(len * sizeof(int));
+		if (result)
 		{
-			*(*result + i) = ft_atoi(split_result[i]);
-			i++;
+			i = 0;
+			while (split_result[i] != NULL)
+			{
+				*(*result + i) = ft_atoi(split_result[i]);
+				i++;
+			}
+			ft_tabfree(split_result, len - 1);
+			return (len);
 		}
-		return (len);
 	}
-	return (-1);
+	ft_tabfree(split_result, len - 1);
+	return (0);
 }
 
-t_list			*get_input(int fd)
+t_list			*get_input(int fd, t_map *map)
 {
-	t_list	*map;
-	char	*line;
-	int		*row;
-	int		ret;
-	int		size;
+	t_list		*origin;
+	t_list		*map_raw;
+	char		*line;
+	int			*row;
+	int			ret;
 
-	map = NULL;
+	map_raw = NULL;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		size = get_row(line, &row);
-		if (size == -1)
+		map->width = get_row(line, &row);
+		if (map->width < 1)
 			return (NULL);
-		if (!map)
-			map = ft_lstnew((int*)row, sizeof(int) * size);
+		origin = map_raw;
+		if (!map_raw)
+			map_raw = ft_lstnew((int*)row, sizeof(int) * map->width);
 		else
-			ft_lstadd(&map, ft_lstnew((int*)row, sizeof(int) * size));
-		if (!map)
+			ft_lstadd(&map_raw, ft_lstnew((int*)row, sizeof(int) * map->width));
+		if (!map_raw)
+		{
+			ft_lstdel(&origin, &free_row);
 			return (NULL);
+		}
+		map->height++;
 	}
-	if (ret == -1 || map == NULL)
-		return (NULL);
-	return (map);
+	return (ret == -1 ? NULL : map_raw);
 }

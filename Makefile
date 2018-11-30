@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/11/30 09:40:34 by hbally           ###   ########.fr        #
+#    Updated: 2018/11/30 17:56:39 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCSDIR   			=	srcs
 
 SRCS			   :=	$(SRCSDIR)/main.c			\
 						$(SRCSDIR)/get_input.c		\
-						$(SRCSDIR)/get_next_line.c	\
+						$(SRCSDIR)/build_map.c		\
+						$(SRCSDIR)/get_next_line.c
 
 OBJSDIR   			=	objs
 
