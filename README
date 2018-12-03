@@ -1,5 +1,6 @@
 TODO
 
+> size of window
 > research perror/strerror, errno variable
 > retour d'erreur propre/consistent 
 >> gestion des mallocs propre dans acquisition de l'input et build de la map

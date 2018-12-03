@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/11/30 17:56:39 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/03 15:01:49 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,11 @@ PROJDIR				=	~/dev/42_fdf
 
 SRCSDIR   			=	srcs
 
-SRCS			   :=	$(SRCSDIR)/main.c			\
+SRCS			   :=	$(SRCSDIR)/get_next_line.c	\
 						$(SRCSDIR)/get_input.c		\
 						$(SRCSDIR)/build_map.c		\
-						$(SRCSDIR)/get_next_line.c
+						$(SRCSDIR)/draw_line.c		\
+						$(SRCSDIR)/main.c
 
 OBJSDIR   			=	objs
 

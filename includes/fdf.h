@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/03 12:55:45 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/03 14:58:45 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int				get_next_line(const int fd, char **line);
 
 t_map			*build_map(int fd);
 t_list			*get_input(int fd, t_map *map);
+void 			draw_line_pilot(t_vector p1, t_vector p2, t_img *img);
+
 
 #endif
