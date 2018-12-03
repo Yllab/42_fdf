@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/03 16:45:09 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/03 19:33:26 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct	s_img
 	int			bpp;
 	int			line_size;
 	int			endian;
-	//optional
 	int			color;
 }				t_img;
 
@@ -63,8 +62,8 @@ int				get_next_line(const int fd, char **line);
 
 t_map			*build_map(int fd);
 t_list			*get_input(int fd, t_map *map);
+void			start_window(t_hub *hub);
 void 			draw_line(t_img *img, t_vector p1, t_vector p2);
-int				key_hook(int keycode, void *param);
-
+int				key_hook2(int keycode, void *param);
 
 #endif
