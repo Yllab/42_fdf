@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/11/30 19:33:26 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/03 16:44:37 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static void		fill_map(t_map *map, t_list *map_raw)
 			x = 0;
 			while (x < map->width)
 			{
-				map->points[z][x].x = (float)x;
+				map->points[z][x].x = x;
 				y = *(int*)(map_raw->content + x * sizeof(int));
-				map->points[z][x].y = (float)y;
-				map->points[z][x].z = (float)z;
+				map->points[z][x].y = y;
+				map->points[z][x].z = z;
 				x++;
 			}
 			map_raw = map_raw->next;

@@ -6,22 +6,17 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 13:29:26 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/03 15:30:38 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/03 16:37:12 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
 
-//DEBUG
-	#include <stdio.h>
-
 static void		update_img(t_img *img, int x, int y)
 {
-	x = x * 4 + img->endian;
-	img->data[y * img->line_size + x] = 0xFF;
-	img->data[y * img->line_size + x + 1] = 0xFF;
-	img->data[y * img->line_size + x + 2] = 0xFF;
+	x = x * 4;
+	ft_memmove(&(img->data[y * img->line_size + x]), &(img->color), 4);
 }
 
 static void 	draw_line_low(t_img *img, t_vector p1, t_vector p2)
@@ -78,7 +73,7 @@ static void 	draw_line_steep(t_img *img, t_vector p1, t_vector p2)
 	}
 }
 
-void 			draw_line_pilot(t_vector p1, t_vector p2, t_img *img)
+void 			draw_line(t_img *img, t_vector p1, t_vector p2)
 {
 	if (fabs((double)(p2.y - p1.y)) < fabs((double)(p2.x - p1.x)))
 	{
