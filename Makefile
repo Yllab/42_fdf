@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/03 18:17:07 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/05 23:01:09 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,16 @@ PROJDIR				=	~/dev/42_fdf
 
 SRCSDIR   			=	srcs
 
-SRCS			   :=	$(SRCSDIR)/get_next_line.c	\
+SRCS			   :=	$(SRCSDIR)/main.c
+						$(SRCSDIR)/get_next_line.c	\
 						$(SRCSDIR)/get_input.c		\
 						$(SRCSDIR)/build_map.c		\
 						$(SRCSDIR)/draw_line.c		\
 						$(SRCSDIR)/hooks.c			\
 						$(SRCSDIR)/render.c			\
 						$(SRCSDIR)/windows.c		\
-						$(SRCSDIR)/main.c
+						$(SRCSDIR)/matrices.c		\
+						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs
 

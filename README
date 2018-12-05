@@ -10,6 +10,7 @@ TODO
 
 
 //atexit
-> remove debug
+> remove debug from functions
+> remove debug.c from sources and from Makefile !!!
 > remove test rule from makefile
 > rm fdf_sample from bin/

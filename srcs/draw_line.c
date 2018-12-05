@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 13:29:26 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/03 17:24:27 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/05 14:23:27 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void 	draw_line_low(t_img *img, t_vector p1, t_vector p2)
 	int 		yi;
 	int 		e;
 
-	dx = p2.x - p1.x;
-	dz = p2.z - p1.z;
+	dx = (int)(p2.x - p1.x);
+	dz = (int)(p2.z - p1.z);
 	yi = dz > 0 ? 1 : -1;
 	dz *= dz > 0 ? 2 : -2;
 	e = dz - dx;
@@ -35,7 +35,7 @@ static void 	draw_line_low(t_img *img, t_vector p1, t_vector p2)
 
 	while (p1.x <= p2.x)
 	{
-		update_img(img, p1.x, p1.z);
+		update_img(img, (int)p1.x, (int)p1.z);
 		if (e > 0)
 		{
 			p1.z += yi;
@@ -50,11 +50,11 @@ static void 	draw_line_steep(t_img *img, t_vector p1, t_vector p2)
 {
 	int 		dx;
 	int 		dz;
-	int 		xi;
 	int 		e;
+	float 		xi;
 
-	dx = p2.x - p1.x;
-	dz = p2.z - p1.z;
+	dx = (int)(p2.x - p1.x);
+	dz = (int)(p2.z - p1.z);
 	xi = dx > 0 ? 1 : -1;
 	dx *= dx > 0 ? 2 : -2;
 	e = dx - dz;
@@ -62,7 +62,7 @@ static void 	draw_line_steep(t_img *img, t_vector p1, t_vector p2)
 
 	while (p1.z <= p2.z)
 	{
-		update_img(img, p1.x, p1.z);
+		update_img(img, (int)p1.x, (int)p1.z);
 		if (e > 0)
 		{
 			p1.x += xi;
