@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 22:53:11 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 22:55:39 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/05 23:45:30 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/06 00:07:28 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 # include "fdf.h"
 
-const t_matrix g_identity =
-{
-	{1, 0, 0, 0},
-	{0, 1, 0, 0},
-	{0, 0, 1, 0},
-	{0, 0, 0, 1}
-};
+typedef float		t_matrix[4][4];
+extern const		t_matrix g_identity;
+extern const		t_matrix g_empty;
+void				rotate_x(t_matrix m, double theta);
+void				rotate_y(t_matrix m, double theta);
+void				rotate_z(t_matrix m, double theta);
 
 #endif

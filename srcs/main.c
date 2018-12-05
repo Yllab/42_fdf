@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 22:32:03 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/06 00:09:51 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 #include "fdf.h"
 #include "libft.h"
 #include "mlx.h"
-
-//DEBUG
-#include <stdio.h>
+#include "matrices.h"
 
 int			main(int argc, char **argv)
 {
@@ -26,9 +24,8 @@ int			main(int argc, char **argv)
 	//DEBUG
 
 	t_matrix m;
-	
-	init_matrix(m, 1);
 
+	matrix_copy(m, g_identity);
 	t_vector v1;
 	v1.x = 3;
 	v1.y = 4;
@@ -41,9 +38,8 @@ int			main(int argc, char **argv)
 
 	scale(m, v2);	
 	translate(m, v1);
-	print_matrix(m);
+	matrix_print(m);
 
-	return(0);
 
 	//END DEBUG
 

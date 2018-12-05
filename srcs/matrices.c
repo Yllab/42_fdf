@@ -6,13 +6,14 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 14:28:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 23:04:25 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/05 23:45:01 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "matrices.h"
 
-void					matrix_copy(t_matrix m1, t_matrix m2)
+void					matrix_copy(t_matrix m1, const t_matrix m2)
 {
 	int 				i;
 	int					j;
@@ -31,7 +32,7 @@ void					matrix_copy(t_matrix m1, t_matrix m2)
 	}
 }
 
-void					matrix_mul(t_matrix m1, t_matrix m2)
+void					matrix_mul(t_matrix m1, const t_matrix m2)
 {
 	int					i;
 	int					j;
@@ -41,7 +42,7 @@ void					matrix_mul(t_matrix m1, t_matrix m2)
 	i = 0;
 	j = 0;
 	k = 0;
-	init_matrix(m3, 0);
+	matrix_copy(m3, g_empty);
 	while (i < 4)
 	{
 		j = 0;
@@ -57,5 +58,5 @@ void					matrix_mul(t_matrix m1, t_matrix m2)
 		}
 		i++;
 	}
-	copy_matrix(m1, m3);
+	matrix_copy(m1, m3);
 }

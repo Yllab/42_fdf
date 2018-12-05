@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 23:03:37 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/05 23:47:12 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define FDF_H
 
 # include "libft.h"
-# define BUFF_SIZE 32
+# include "matrices.h"
 
-typedef float	 	t_matrix[4][4];
+# define BUFF_SIZE 32
 
 typedef struct		s_vector
 {
@@ -70,11 +70,11 @@ void 				draw_line(t_img *img, t_vector p1, t_vector p2);
 int					key_hook2(int keycode, void *param);
 
 //DEBUG
-void					matrix_print(t_matrix m);
-void					matrix_mul(t_matrix m1, t_matrix m2);
-void					matrix_copy(t_matrix m1, t_matrix m2);
+void				matrix_print(t_matrix m);
+void				matrix_mul(t_matrix m1, const t_matrix m2);
+void				matrix_copy(t_matrix m1, const t_matrix m2);
 
-void					scale(t_matrix m, t_vector vect);
-void					translate(t_matrix m, t_vector t);
+void				scale(t_matrix m, t_vector vect);
+void				translate(t_matrix m, t_vector t);
 
 #endif
