@@ -6,6 +6,7 @@ TODO
 >> gestion des mallocs propre dans acquisition de l'input et build de la map
 > usage du main si pas d'arg
 > multi map
+> erreur crash si matrix inv impossible (sait on jamais)
 
 
 

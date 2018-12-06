@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/05 23:32:30 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/06 18:28:24 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,11 @@ SRCS			   :=	$(SRCSDIR)/main.c			\
 						$(SRCSDIR)/hooks.c			\
 						$(SRCSDIR)/render.c			\
 						$(SRCSDIR)/windows.c		\
-						$(SRCSDIR)/matrices.c		\
-						$(SRCSDIR)/matrices_const.c	\
+						$(SRCSDIR)/matrix_const.c	\
+						$(SRCSDIR)/matrix_mul.c		\
+						$(SRCSDIR)/matrix_inv.c		\
 						$(SRCSDIR)/transform.c		\
+						$(SRCSDIR)/vector.c			\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs

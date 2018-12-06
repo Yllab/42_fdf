@@ -6,12 +6,12 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 22:58:13 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 23:45:16 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/06 15:23:33 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "matrices.h"
+#include "matrix.h"
 
 void					translate(t_matrix m, t_vector vect)
 {
