@@ -6,11 +6,12 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/06 19:14:22 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 14:49:20 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <math.h>
 #include "fdf.h"
 #include "libft.h"
 #include "mlx.h"
@@ -24,9 +25,9 @@ int			main(int argc, char **argv)
 
 	t_vector 	v;
 
-	v.x = 0.5;
-	v.y = 0.5;
-	v.z = 0.5;
+	v.x = 5;
+	v.y = 6;
+	v.z = 7;
 	v.w = 1;
 
 	t_matrix m =
@@ -36,17 +37,14 @@ int			main(int argc, char **argv)
 		{0.573, -0.259, 0.777, 0},
 		{0.526, 1.254, -2.532, 1}
 	};
-
-	vectmat_mul(&v, m);
-	printf("x = %f\n", v.x);
-	printf("y = %f\n", v.y);
-	printf("z = %f\n", v.z);
-	printf("w = %f\n", v.w);
-
-	return (0);
 	
-	matrix_inv(m);
+	matrix_init(m, 1);
+	matrix_rotate(m, 0, M_PI_2, 0);
 	matrix_print(m);
+	return (0);
+	vect_mat_mul(&v, m);
+
+	
 
 	t_vector v1;
 	v1.x = 3;

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/03 19:41:37 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 13:38:52 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,14 @@ static void		create_window(t_hub *hub)
 	}
 }
 
-int			key_hook(int keycode, void *param)
-{
-	param = 0;
-	keycode = 10;
-	return (0);
-}
+int				key_hook(int keycode, void *param);
 
 void			start_window(t_hub *hub)
 {
 	create_window(hub);
 	if (hub->win->mlx_id && hub->win->self_id)
 	{
-		//mlx_key_hook(hub->win->self_id, &key_hook, hub);
+		mlx_key_hook(hub->win->self_id, &key_hook, hub);
 		mlx_loop(hub->win->mlx_id);
 	}
 }

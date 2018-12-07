@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/06 18:28:24 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/07 13:54:19 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS			   :=	$(SRCSDIR)/main.c			\
 						$(SRCSDIR)/hooks.c			\
 						$(SRCSDIR)/render.c			\
 						$(SRCSDIR)/windows.c		\
-						$(SRCSDIR)/matrix_const.c	\
+						$(SRCSDIR)/matrix_rotate.c	\
 						$(SRCSDIR)/matrix_mul.c		\
 						$(SRCSDIR)/matrix_inv.c		\
 						$(SRCSDIR)/transform.c		\

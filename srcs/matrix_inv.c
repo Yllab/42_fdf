@@ -6,16 +6,13 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/06 18:16:05 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 14:41:04 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "matrix.h"
 #include "math.h"
-
-//DEBUG
-#include <stdio.h>
 
 static void				row_swap(t_matrix m1, int i, int j)
 {
@@ -28,7 +25,7 @@ static void				row_swap(t_matrix m1, int i, int j)
 	{
 		m1[i][k] = swap[j][k];
 		m1[j][k] = swap[i][k];
-		k++;	
+		k++;
 	}
 }
 
@@ -75,8 +72,8 @@ static void				set_zero(t_matrix m1, t_matrix m2, int i)
 			k = 0;
 			while (k < 4)
 			{
-				m1[j][k] -= coeff * m1[i][k]; 
-				m2[j][k] -= coeff * m2[i][k]; 
+				m1[j][k] -= coeff * m1[i][k];
+				m2[j][k] -= coeff * m2[i][k];
 				k++;
 			}
 		}
@@ -86,8 +83,8 @@ static void				set_zero(t_matrix m1, t_matrix m2, int i)
 
 static void				set_one(t_matrix m1, t_matrix m2, int i)
 {
-	int j;
-	float pivot;
+	int 				j;
+	float 				pivot;
 
 	pivot = m1[i][i];
 	if (pivot != 1)
@@ -107,7 +104,7 @@ void					matrix_inv(t_matrix m1)
 	t_matrix			m2;
 	int					i;
 
-	matrix_copy(m2, g_identity);
+	matrix_init(m2, 1);
 	set_pivot(m1, m2);
 	i = 0;
 	while (i < 4)
@@ -116,6 +113,5 @@ void					matrix_inv(t_matrix m1)
 		set_zero(m1, m2, i);
 		i++;
 	}
-
 	matrix_copy(m1, m2);
 }

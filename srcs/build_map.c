@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/05 17:16:41 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 13:27:32 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,20 @@ static void		fill_map(t_map *map, t_list *map_raw)
 	while (map_raw)
 	{
 		map->points[z] = (t_vector*)malloc(sizeof(t_vector) * map->width);
-		if (map->points[z])
-		{
-			x = 0;
-			while (x < map->width)
-			{
-				map->points[z][x].x = (float)x;
-				y = *(int*)(map_raw->content + x * sizeof(int));
-				map->points[z][x].y = (float)y;
-				map->points[z][x].z = (float)z;
-				map->points[z][x].w = 1;
-				x++;
-			}
-			map_raw = map_raw->next;
-			z--;
-		}
-		else
+		if (!(map->points[z]))
 			exit(1);
+		x = 0;
+		while (x < map->width)
+		{
+			y = *(int*)(map_raw->content + x * sizeof(int));
+			map->points[z][x].x = (float)x;
+			map->points[z][x].y = (float)y;
+			map->points[z][x].z = (float)z;
+			map->points[z][x].w = 1;
+			x++;
+		}
+		map_raw = map_raw->next;
+		z--;
 	}
 }
 

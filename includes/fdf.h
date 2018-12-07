@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/06 19:12:50 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 14:48:43 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 # define BUFF_SIZE 32
 
-//DEBUG
-#include <stdio.h>
 
 typedef struct		s_vector
 {
@@ -64,6 +62,14 @@ typedef struct		s_hub
 	t_map			*map;
 }					t_hub;
 
+//DEBUG
+
+#include <stdio.h>
+void					vector_print(t_vector *v);
+void					matrix_print(t_matrix m);
+
+//END DEBUG
+
 int					get_next_line(const int fd, char **line);
 
 t_map				*build_map(int fd);
@@ -77,6 +83,6 @@ void				translate(t_matrix m, t_vector t);
 
 void				vector_reset(t_vector *v);
 void				vector_copy(t_vector *v1, const t_vector *v2);
-void				vectmat_mul(t_vector *v1, const t_matrix m);
+void				vect_mat_mul(t_vector *v1, const t_matrix m);
 
 #endif

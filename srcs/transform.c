@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 22:58:13 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/06 15:23:33 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 14:38:10 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void					translate(t_matrix m, t_vector vect)
 {
 	t_matrix 			translate;
 
-	matrix_copy(translate, g_identity);
+	matrix_init(translate, 1);
 	translate[3][0] = vect.x;
 	translate[3][1] = vect.y;
 	translate[3][2] = vect.z;
@@ -28,7 +28,7 @@ void					scale(t_matrix m, t_vector vect)
 {
 	t_matrix			scale;
 
-	matrix_copy(scale, g_identity);
+	matrix_init(scale, 1);
 	scale[0][0] = vect.x;
 	scale[1][1] = vect.y;
 	scale[2][2] = vect.z;

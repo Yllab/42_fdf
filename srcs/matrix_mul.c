@@ -6,43 +6,61 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:23:20 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/06 18:36:30 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 13:53:34 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "matrix.h"
 
-void					matrix_copy(t_matrix m1, const t_matrix m2)
+void				matrix_init(t_matrix m, int identity)
 {
-	int 				i;
-	int					j;
+	int				i;
+	int				j;
+
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			m[i][j] = 0;
+			if (identity && i == j)
+				m[i][j] = 1;
+		}
+	}
+}
+
+void				matrix_copy(t_matrix m1, const t_matrix m2)
+{
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
 	while (i < 4)
 	{
-		j = 0;	
+		j = 0;
 		while (j < 4)
 		{
-			m1[i][j] = m2[i][j];	
+			m1[i][j] = m2[i][j];
 			j++;
 		}
 		i++;
 	}
 }
 
-void					matrix_mul(t_matrix m1, const t_matrix m2)
+void				matrix_mul(t_matrix m1, const t_matrix m2)
 {
-	int					i;
-	int					j;
-	int					k;
-	t_matrix			m3;
+	int				i;
+	int				j;
+	int				k;
+	t_matrix		m3;
 
 	i = 0;
 	j = 0;
 	k = 0;
-	matrix_copy(m3, g_empty);
+	matrix_init(m3, 0);
 	while (i < 4)
 	{
 		j = 0;
