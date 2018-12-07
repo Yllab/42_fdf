@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:49:20 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 19:45:00 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,56 +17,31 @@
 #include "mlx.h"
 #include "matrix.h"
 
+void					transform_map(t_map *map,
+										float delta_height, float delta_scale)
+{
+	//transform.matrix needs to be set to identity at the start
+	matrix_inv(map->transform.matrix);
+	transform_apply(&(map->transform), map->points, map->width, map->height);
+	map->transform.translate_y += delta_height;
+	map->transform.scale_x += delta_scale;
+	map->transform.scale_y += delta_scale;
+	transform_build(&(map->transform));
+	transform_apply(&(map->transform), map->points, map->width, map->height);
+}
+
 int			main(int argc, char **argv)
 {
 	int			fd;
 	t_hub		hub;
-	//DEBUG
-
-	t_vector 	v;
-
-	v.x = 5;
-	v.y = 6;
-	v.z = 7;
-	v.w = 1;
-
-	t_matrix m =
-	{
-		{0.718, 0.615, -0.324, 0},
-		{-0.393, 0.744, 0.539, 0},
-		{0.573, -0.259, 0.777, 0},
-		{0.526, 1.254, -2.532, 1}
-	};
-	
-	matrix_init(m, 1);
-	matrix_rotate(m, 0, M_PI_2, 0);
-	matrix_print(m);
-	return (0);
-	vect_mat_mul(&v, m);
-
-	
-
-	t_vector v1;
-	v1.x = 3;
-	v1.y = 4;
-	v1.z = 5;
-
-	t_vector v2;
-	v2.x = 4;
-	v2.y = 5;
-	v2.z = 6;
-
-	scale(m, v2);	
-	translate(m, v1);
-	matrix_print(m);
-
-	//END DEBUG
 
 	if (argc == 2)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) != -1)
 		{
 			hub.map = build_map(fd);
+			//DEBUG
+			//END DEBUG
 			if (hub.map)
 				start_window(&hub);
 		}

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:48:43 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 19:45:30 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,15 @@
 # define FDF_H
 
 # include "libft.h"
-# include "matrix.h"
+# include "types.h"
 
 # define BUFF_SIZE 32
 
-
-typedef struct		s_vector
-{
-	float			x;
-	float			y;
-	float			z;
-	float			w;
-}					t_vector;
-
-typedef struct		s_map
-{
-	t_vector		**points;
-	int				width;
-	int				height;
-	int				zoom;
-	int				move_y;
-	int				move_x;
-}					t_map;
-
-typedef struct		s_win
-{
-	void			*self_id;
-	void			*mlx_id;	
-	int				w;
-	int				h;
-}					t_win;
-
-typedef struct		s_img
-{
-	void			*self_id;
-	char			*data;
-	int				bpp;
-	int				line_size;
-	int				endian;
-	int				color;
-}					t_img;
-
-typedef struct		s_hub
-{
-	t_win			*win;
-	t_img			*img;
-	t_map			*map;
-}					t_hub;
-
 //DEBUG
 
-#include <stdio.h>
-void					vector_print(t_vector *v);
-void					matrix_print(t_matrix m);
+# include <stdio.h>
+void				vector_print(t_vector *v);
+void				matrix_print(t_matrix m);
 
 //END DEBUG
 
@@ -78,11 +34,11 @@ void				start_window(t_hub *hub);
 void 				draw_line(t_img *img, t_vector p1, t_vector p2);
 int					key_hook2(int keycode, void *param);
 
-void				scale(t_matrix m, t_vector vect);
-void				translate(t_matrix m, t_vector t);
-
 void				vector_reset(t_vector *v);
 void				vector_copy(t_vector *v1, const t_vector *v2);
 void				vect_mat_mul(t_vector *v1, const t_matrix m);
 
+void				transform_apply(t_transform *t,
+					t_vector **points, int width, int height);
+void				transform_build(t_transform *t);
 #endif

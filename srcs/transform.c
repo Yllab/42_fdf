@@ -5,32 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 22:58:13 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:38:10 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/07 18:45:28 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/07 19:43:16 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "matrix.h"
 
-void					translate(t_matrix m, t_vector vect)
+void				transform_build(t_transform *t)
 {
-	t_matrix 			translate;
+	t_matrix		m;
 
-	matrix_init(translate, 1);
-	translate[3][0] = vect.x;
-	translate[3][1] = vect.y;
-	translate[3][2] = vect.z;
-	matrix_mul(m, translate);
+	matrix_init(m, 1);
+	matrix_rotate(m, t->rotate_x, t->rotate_y, t->rotate_z);
+	matrix_scale(m, t->scale_x, t->scale_y, t->scale_z);
+	//NOT DONE
 }
 
-void					scale(t_matrix m, t_vector vect)
+void				transform_apply(t_transform *t,
+					t_vector **points, int width, int height)
 {
-	t_matrix			scale;
+	int				i;
+	int				j;
 
-	matrix_init(scale, 1);
-	scale[0][0] = vect.x;
-	scale[1][1] = vect.y;
-	scale[2][2] = vect.z;
-	matrix_mul(m, scale);
+	i = 0;
+	j = 0;
+	while (i < height)
+	{
+		j = 0;
+		while (j < width)
+		{
+			vect_mat_mul(&(points[i][j]), t->matrix);
+			j++;
+		}
+		i++;
+	}
 }

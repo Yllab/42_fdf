@@ -8,7 +8,7 @@ TODO
 > multi map
 > erreur crash si matrix inv impossible (sait on jamais)
 > del fonctions vector_copy et vector_reset si pas besoin
-
+> check fonctions interdites (memalloc?)
 
 
 //atexit

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 13:27:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/07 19:10:25 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_map			*build_map(int fd)
 	t_map		*map;
 	t_list		*map_raw;
 
-	map = (t_map*)malloc(sizeof(t_map));
+	map = (t_map*)ft_memalloc(sizeof(t_map));
 	map->width = 0;
 	map->height = 0;
 	if (map && (map_raw = get_input(fd, map)))

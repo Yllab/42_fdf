@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/07 13:54:19 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/07 19:25:27 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,32 +18,33 @@ PROJDIR				=	~/dev/42_fdf
 
 SRCSDIR   			=	srcs
 
-SRCS			   :=	$(SRCSDIR)/main.c			\
-						$(SRCSDIR)/get_next_line.c	\
-						$(SRCSDIR)/get_input.c		\
-						$(SRCSDIR)/build_map.c		\
-						$(SRCSDIR)/draw_line.c		\
-						$(SRCSDIR)/hooks.c			\
-						$(SRCSDIR)/render.c			\
-						$(SRCSDIR)/windows.c		\
-						$(SRCSDIR)/matrix_rotate.c	\
-						$(SRCSDIR)/matrix_mul.c		\
-						$(SRCSDIR)/matrix_inv.c		\
-						$(SRCSDIR)/transform.c		\
-						$(SRCSDIR)/vector.c			\
+SRCS			   :=	$(SRCSDIR)/main.c					\
+						$(SRCSDIR)/get_next_line.c			\
+						$(SRCSDIR)/get_input.c				\
+						$(SRCSDIR)/build_map.c				\
+						$(SRCSDIR)/draw_line.c				\
+						$(SRCSDIR)/hooks.c					\
+						$(SRCSDIR)/render.c					\
+						$(SRCSDIR)/windows.c				\
+						$(SRCSDIR)/matrix_rotate.c			\
+						$(SRCSDIR)/matrix_transform.c		\
+						$(SRCSDIR)/matrix.c					\
+						$(SRCSDIR)/matrix_inv.c				\
+						$(SRCSDIR)/vector.c					\
+						$(SRCSDIR)/transform.c				\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs
 
 OBJS  			   :=	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
 
-INCLUDES			=   -I libft/includes 			\
-						-I includes					\
-						-I minilibx_macos			\
+INCLUDES			=   -I libft/includes 					\
+						-I includes							\
+						-I minilibx_macos					\
 
-LIBS				=	-L libft/ -lft				\
-						-L minilibx_macos/ -lmlx 	\
-						-framework OpenGL			\
+LIBS				=	-L libft/ -lft						\
+						-L minilibx_macos/ -lmlx 			\
+						-framework OpenGL					\
 						-framework AppKit
 
 CFLAGS			   +=	-Wall -Werror -Wextra
