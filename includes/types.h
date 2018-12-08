@@ -6,12 +6,16 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 19:46:47 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 12:48:34 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPES_H
 # define TYPES_H
+
+/*
+** Transformation matrix builder
+*/
 
 typedef float		t_matrix[4][4];
 
@@ -29,6 +33,10 @@ typedef struct		s_transform
 	t_matrix		matrix;
 }					t_transform;
 
+/*
+** Vect4 with w parameter (1 = point, 0 = vector)
+*/
+
 typedef struct		s_vector
 {
 	float			x;
@@ -37,13 +45,30 @@ typedef struct		s_vector
 	float			w;
 }					t_vector;
 
+/*
+** Objects in the scene + Transform
+*/
+
 typedef struct		s_map
 {
 	t_vector		**points;
 	int				width;
 	int				height;
-	t_transform		transform;
+	t_transform		t;
 }					t_map;
+
+typedef struct		s_camera
+{
+	t_transform		t;
+	float			canvas_width;
+	float			canvas_height;
+	int				win_w;
+	int				win_h;
+}					t_camera;
+
+/*
+** Window management
+*/
 
 typedef struct		s_win
 {
@@ -52,6 +77,10 @@ typedef struct		s_win
 	int				w;
 	int				h;
 }					t_win;
+
+/*
+** Rendered image storage
+*/
 
 typedef struct		s_img
 {
@@ -63,10 +92,15 @@ typedef struct		s_img
 	int				color;
 }					t_img;
 
+/*
+** Main access structure
+*/
+
 typedef struct		s_hub
 {
 	t_win			win;
 	t_img			img;
+	t_camera		camera;
 	t_map			*map;
 }					t_hub;
 

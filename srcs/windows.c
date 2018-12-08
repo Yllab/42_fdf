@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 19:03:49 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 12:48:24 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,29 @@
 
 static void		find_window_size(t_hub *hub)
 {
-	hub->win.w = 1500;
-	hub->win.h = 1000;
+	hub->camera.win_w = 1500;
+	hub->camera.win_h = 1000;
 }
 
 /*
 ** _________________________________________
 */
 
-static void		create_window(t_hub *hub)
+static void		create_window(t_hub *hub,
+								t_win *win, t_img *img, t_camera *cam)
 {
-	hub->win.mlx_id = mlx_init();
-	if (hub->win.mlx_id)
+	win->mlx_id = mlx_init();
+	if (win->mlx_id)
 	{
 		find_window_size(hub);
-		hub->win.self_id = mlx_new_window(hub->win.mlx_id,
-											hub->win.w, hub->win.h, "fdf");
-		if (hub->win.self_id)
+		win->self_id = mlx_new_window(win->mlx_id, cam->win_w, cam->win_h,
+																		"fdf");
+		if (win->self_id)
 		{
-			hub->img.self_id = mlx_new_image(hub->win.mlx_id, 
-												hub->win.w, hub->win.h);
-			hub->img.data = mlx_get_data_addr(hub->img.self_id, &(hub->img.bpp),
-									&(hub->img.line_size), &(hub->img.endian));
-			hub->img.color = 0xFFFFFF;
+			img->self_id = mlx_new_image(win->mlx_id, cam->win_w, cam->win_h);
+			img->data = mlx_get_data_addr(img->self_id, &(img->bpp),
+											&(img->line_size), &(img->endian));
+			img->color = 0xFFFFFF;
 		}
 	}
 	else
@@ -58,7 +58,7 @@ int				key_hook(int keycode, void *param);
 
 void			start_window(t_hub *hub)
 {
-	create_window(hub);
+	create_window(hub, &(hub->win), &(hub->img), &(hub->camera));
 	if (hub->win.mlx_id && hub->win.self_id)
 	{
 		//mlx_key_hook(hub->win.self_id, &key_hook, hub);

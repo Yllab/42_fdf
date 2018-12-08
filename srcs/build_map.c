@@ -6,13 +6,14 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 19:10:25 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 09:46:06 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "fdf.h"
+#include "matrix.h"
 
 static void		free_row(void *row, size_t row_size)
 {
@@ -65,6 +66,7 @@ t_map			*build_map(int fd)
 			if (map->points)
 			{
 				fill_map(map, map_raw);
+				matrix_init(map->transform.matrix, 1);
 				ft_lstdel(&map_raw, &free_row);
 				return (map);
 			}

@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/07 19:25:27 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/08 11:13:22 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/matrix_inv.c				\
 						$(SRCSDIR)/vector.c					\
 						$(SRCSDIR)/transform.c				\
+						$(SRCSDIR)/startup_scene.c			\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs

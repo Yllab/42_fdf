@@ -3,6 +3,8 @@ TODO
 > size of window
 > research perror/strerror, errno variable
 > retour d'erreur propre/consistent 
+>> une fois get input OK, si erreur plus tard ds le programme, utiliser fct
+d'erreur qui free la map et return
 >> gestion des mallocs propre dans acquisition de l'input et build de la map
 > usage du main si pas d'arg
 > multi map
