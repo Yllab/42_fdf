@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 12:48:34 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 13:40:36 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct		s_map
 typedef struct		s_camera
 {
 	t_transform		t;
-	float			canvas_width;
-	float			canvas_height;
+	float			canvas_w;
+	float			canvas_h;
 	int				win_w;
 	int				win_h;
 }					t_camera;

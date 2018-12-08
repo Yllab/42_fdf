@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 09:46:06 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 13:38:21 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_map			*build_map(int fd)
 			if (map->points)
 			{
 				fill_map(map, map_raw);
-				matrix_init(map->transform.matrix, 1);
+				matrix_init(map->t.matrix, 1);
 				ft_lstdel(&map_raw, &free_row);
 				return (map);
 			}

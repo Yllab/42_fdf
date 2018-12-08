@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 11:20:37 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 13:52:20 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ void				matrix_print(t_matrix m);
 
 //END DEBUG
 
-int					get_next_line(const int fd, char **line);
-
 t_map				*build_map(int fd);
 t_list				*get_input(int fd, t_map *map);
+int					get_next_line(const int fd, char **line);
 void				start_window(t_hub *hub);
-void 				draw_line(t_img *img, t_vector p1, t_vector p2);
-int					key_hook2(int keycode, void *param);
-void				startup_scene(t_hub *hub);
 
 void				vector_reset(t_vector *v);
 void				vector_copy(t_vector *v1, const t_vector *v2);
@@ -42,7 +38,11 @@ void				vect_mat_mul(t_vector *v1, const t_matrix m);
 void				transform_apply(t_transform *t,
 									t_vector **points, int width, int height);
 void				transform_build(t_transform *t);
-
 void				map_transform(t_map *map,
 									float delta_elevation, float delta_scale);
+
+void				startup_scene(t_hub *hub);
+void				render(t_hub *hub);
+void 				draw_line(t_img *img, t_vector p1, t_vector p2);
+
 #endif
