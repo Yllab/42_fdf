@@ -16,8 +16,7 @@ void				pt_to_screen(t_vector *point, t_camera *cam)
 	point->x = (point->x + cam->canvas_w / 2) / cam->canvas_w;
 	point->y = (point->y + cam->canvas_h / 2) / cam->canvas_h;
 	point->x = floor((double)(point->x * cam->win_w));
-	point->y = floor((double)(point->y * cam->win_h));
-
+	point->y = floor((double)((1 - point->y) * cam->win_h));
 }
 
 void				pt_to_canvas(t_vector *point, t_camera *cam)
@@ -61,18 +60,25 @@ void				render(t_hub *hub)
 
 	z = 0;
 	x = 0;
+	ft_bzero(hub->img.data, hub->img.line_size * hub->camera.win_h);
+	mlx_clear_window(hub->win.mlx_id, hub->win.self_id);
 	hub->camera.canvas_w = 2;
 	hub->camera.canvas_h = 2;
+	transform_build(&(hub->camera.t));
 	matrix_inv(hub->camera.t.matrix);
 	while (z < hub->map->height)
 	{
 		x = 0;
 		while (x < hub->map->width)
 		{
+			
 			vector_copy(&point, &(hub->map->points[z][x]));
 			pt_to_canvas(&point, &(hub->camera));
 			if (is_visible(&point, &(hub->camera)))
+			{
+				pt_to_screen(&point, &(hub->camera));
 				pt_draw(point, hub, z, x);
+			}
 			x++;
 		}
 		z++;

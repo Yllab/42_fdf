@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 13:52:20 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 21:02:58 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 //DEBUG
 
 # include <stdio.h>
+# include <stdlib.h>
 void				vector_print(t_vector *v);
 void				matrix_print(t_matrix m);
 
@@ -44,5 +45,8 @@ void				map_transform(t_map *map,
 void				startup_scene(t_hub *hub);
 void				render(t_hub *hub);
 void 				draw_line(t_img *img, t_vector p1, t_vector p2);
+void				color_points(t_map *map);
+
+int			key_hook(int keycode, void *param);
 
 #endif

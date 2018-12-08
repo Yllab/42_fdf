@@ -6,17 +6,17 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 13:29:26 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 13:35:39 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 20:33:31 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
 
-static void		update_img(t_img *img, int x, int y)
+static void		update_img(t_img *img, int x, int y, int color)
 {
 	x = x * 4;
-	ft_memmove(&(img->data[y * img->line_size + x]), &(img->color), 4);
+	ft_memmove(&(img->data[y * img->line_size + x]), &color, 4);
 }
 
 static void		draw_line_low(t_img *img, t_vector p1, t_vector p2)
@@ -34,7 +34,7 @@ static void		draw_line_low(t_img *img, t_vector p1, t_vector p2)
 	dx *= 2;
 	while (p1.x <= p2.x)
 	{
-		update_img(img, (int)p1.x, (int)p1.y);
+		update_img(img, (int)p1.x, (int)p1.y, p1.color);
 		if (e > 0)
 		{
 			p1.y += yi;
@@ -60,7 +60,7 @@ static void		draw_line_steep(t_img *img, t_vector p1, t_vector p2)
 	dy *= 2;
 	while (p1.y <= p2.y)
 	{
-		update_img(img, (int)p1.x, (int)p1.y);
+		update_img(img, (int)p1.x, (int)p1.y, p1.color);
 		if (e > 0)
 		{
 			p1.x += xi;

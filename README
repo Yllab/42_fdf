@@ -12,6 +12,11 @@ d'erreur qui free la map et return
 > del fonctions vector_copy et vector_reset si pas besoin
 > check fonctions interdites (memalloc?)
 
+> points qui ghost avec le zoom
+> controle
+> scaling du y
+> gestion de plusieurs perspectives
+> bug sur rotation de pi/6
 
 //atexit
 > remove debug from functions

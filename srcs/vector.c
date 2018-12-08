@@ -6,22 +6,11 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:27:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:48:28 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/08 17:17:47 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void			vector_reset(t_vector *v)
-{
-	if (v)
-	{
-		v->x = 0;
-		v->y = 0;
-		v->z = 0;
-		v->w = 0;
-	}
-}
 
 void			vector_copy(t_vector *v1, const t_vector *v2)
 {
@@ -31,6 +20,7 @@ void			vector_copy(t_vector *v1, const t_vector *v2)
 		v1->y = v2->y;
 		v1->z = v2->z;
 		v1->w = v2->w;
+		v1->color = v2->color;//
 	}
 }
 

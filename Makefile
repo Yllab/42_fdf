@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/08 13:50:21 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/08 21:01:47 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/startup_scene.c			\
 						$(SRCSDIR)/render.c					\
 						$(SRCSDIR)/draw_line.c				\
+						$(SRCSDIR)/text_ui.c				\
+						$(SRCSDIR)/colors.c					\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs
@@ -61,7 +63,6 @@ $(BINDIR)/$(NAME)	: 	$(OBJS)
 
 .PHONY				:	run
 run					:	$(BINDIR)/$(NAME)
-						clear
 						@$(PROJDIR)/$(BINDIR)/fdf $(PROJDIR)/maps/test.fdf
 
 $(OBJS)				: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
