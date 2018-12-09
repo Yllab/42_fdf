@@ -6,17 +6,19 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 13:52:28 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 22:21:48 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "fdf.h"
 #include "libft.h"
 #include "matrix.h"
-#include <math.h>
+#include "colors.h"
 
 void			startup_camera(t_camera *camera, t_map *map)
 {
+	ft_bzero(&(camera->t), sizeof(t_transform));
 	camera->t.rotate_x = -M_PI / 3;
 	camera->t.rotate_y = -atan((double)map->width / (double)map->height);
 	camera->t.translate_x = -(((float)map->width / 2) * map->t.scale_x);
@@ -38,7 +40,10 @@ void			startup_map(t_map *map,
 
 void			startup_scene(t_hub *hub)
 {
-	map_find_altitude(map);
+	ft_bzero(&(hub->camera), sizeof(t_camera));
+//	map_assign_altitude(hub->map, 5);
+	hub->img.background_color = DARK_GRAY;
+	hub->img.map_color = LIGHT_BLUE;
 	startup_map(hub->map, 0.5, 1);
 	startup_camera(&(hub->camera), hub->map);
 }

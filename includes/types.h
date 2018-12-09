@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 13:43:34 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 21:17:35 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct		s_vector
 	float			y;
 	float			z;
 	float			w;
-	int				color;//
+	int				altitude;
+	int				level;
 }					t_vector;
 
 /*
@@ -58,6 +59,7 @@ typedef struct		s_map
 	int				height;
 	int				min_y;
 	int				max_y;
+	int				granularity;
 }					t_map;
 
 typedef struct		s_camera
@@ -65,8 +67,6 @@ typedef struct		s_camera
 	t_transform		t;
 	float			canvas_w;
 	float			canvas_h;
-	int				win_w;
-	int				win_h;
 }					t_camera;
 
 /*
@@ -80,18 +80,29 @@ typedef struct		s_win
 }					t_win;
 
 /*
-** Rendered image storage
+** Image drawing
 */
 
 typedef struct		s_img
 {
 	void			*self_id;
 	char			*data;
+	int				win_width;
+	int				win_height;
 	int				bpp;
 	int				line_size;
 	int				endian;
-	int				color;
+	int				background_color;
+	int				map_color;
 }					t_img;
+
+typedef struct		s_line
+{
+	int				start_x;
+	int				start_y;
+	int				end_x;
+	int				end_y;
+}					t_line;
 
 /*
 ** Main access structure

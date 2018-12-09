@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:41:04 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 19:01:33 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void					matrix_inv(t_matrix m1)
 	t_matrix			m2;
 	int					i;
 
-	matrix_init(m2, 1);
+	matrix_init(m2);
 	set_pivot(m1, m2);
 	i = 0;
 	while (i < 4)

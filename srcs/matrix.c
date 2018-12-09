@@ -6,14 +6,15 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:22:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 18:46:11 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 19:00:54 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "matrix.h"
+#include "libft.h"
 
-void				matrix_init(t_matrix m, int identity)
+void				matrix_init(t_matrix m)
 {
 	int				i;
 	int				j;
@@ -25,7 +26,7 @@ void				matrix_init(t_matrix m, int identity)
 		while (j < 4)
 		{
 			m[i][j] = 0;
-			if (identity && i == j)
+			if (i == j)
 				m[i][j] = 1;
 			j++;
 		}
@@ -62,7 +63,7 @@ void				matrix_mul(t_matrix m1, const t_matrix m2)
 	i = 0;
 	j = 0;
 	k = 0;
-	matrix_init(m3, 0);
+	ft_bzero(&m3, sizeof(t_matrix));
 	while (i < 4)
 	{
 		j = 0;

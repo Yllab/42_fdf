@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/08 21:01:47 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/09 22:15:36 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/get_next_line.c			\
 						$(SRCSDIR)/get_input.c				\
 						$(SRCSDIR)/build_map.c				\
-						$(SRCSDIR)/hooks.c					\
+						$(SRCSDIR)/keyboard_hooks.c			\
 						$(SRCSDIR)/windows.c				\
 						$(SRCSDIR)/vector.c					\
 						$(SRCSDIR)/matrix.c					\
@@ -35,6 +35,8 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/draw_line.c				\
 						$(SRCSDIR)/text_ui.c				\
 						$(SRCSDIR)/colors.c					\
+						$(SRCSDIR)/map_altitudes.c			\
+						$(SRCSDIR)/img_update.c				\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs

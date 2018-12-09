@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 14:54:20 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 14:55:07 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 18:52:30 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			matrix_rotate_x(t_matrix m, double theta)
 {
 	t_matrix	r;
 
-	matrix_init(r, 1);
+	matrix_init(r);
 	r[1][1] = (float)cos(theta);
 	r[1][2] = (float)sin(theta);
 	r[2][1] = (float)-sin(theta);
@@ -30,7 +30,7 @@ void			matrix_rotate_y(t_matrix m, double theta)
 {
 	t_matrix	r;
 
-	matrix_init(r, 1);
+	matrix_init(r);
 	r[0][0] = (float)cos(theta);
 	r[0][2] = (float)-sin(theta);
 	r[2][0] = (float)sin(theta);
@@ -42,7 +42,7 @@ void			matrix_rotate_z(t_matrix m, double theta)
 {
 	t_matrix	r;
 
-	matrix_init(r, 1);
+	matrix_init(r);
 	r[0][0] = (float)cos(theta);
 	r[0][1] = (float)sin(theta);
 	r[1][0] = (float)-sin(theta);

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 18:45:28 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 09:31:08 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 19:01:43 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void				transform_build(t_transform *t)
 {
 	t_matrix		m;
 
-	matrix_init(m, 1);
+	matrix_init(m);
 	matrix_rotate(m, t->rotate_x, t->rotate_y, t->rotate_z);
 	matrix_scale(m, t->scale_x, t->scale_y, t->scale_z);
 	matrix_translate(m, t->translate_x, t->translate_y, t->translate_z);

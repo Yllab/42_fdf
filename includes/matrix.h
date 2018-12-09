@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 23:45:30 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/07 18:25:17 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 19:01:52 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "types.h"
 
-void				matrix_init(t_matrix m, int identity);
+void				matrix_init(t_matrix m);
 void				matrix_copy(t_matrix m1, const t_matrix m2);
 
 void				matrix_mul(t_matrix m1, const t_matrix m2);

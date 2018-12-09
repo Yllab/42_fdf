@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 19:22:05 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/09 21:09:10 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/09 21:15:03 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <math.h>
-#include "fdf.h"
-#include "libft.h"
-#include "mlx.h"
-#include "matrix.h"
+#ifndef COLORS_H
+# define COLORS_H
 
-int			main(int argc, char **argv)
-{
-	int			fd;
-	t_hub		hub;
+# define LIGHT_BLUE 0xECEFF1
+# define LIGHT_GRAY 0xF5F5F5
+# define DARK_GRAY 0x212121
 
-	if (argc == 2)
-	{
-		if ((fd = open(argv[1], O_RDONLY)) != -1)
-		{
-			hub.map = build_map(fd);
-			if (hub.map)
-				start_window(&hub);
-		}
-	}
-	return (0);
-}
+#endif
