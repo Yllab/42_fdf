@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/08 17:03:36 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/09 13:43:34 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct		s_map
 	t_vector		**points;
 	int				width;
 	int				height;
+	int				min_y;
+	int				max_y;
 }					t_map;
 
 typedef struct		s_camera
