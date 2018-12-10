@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:35:20 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 22:58:26 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 12:54:42 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ void			img_set_background(t_img *img, int color)
 	}
 }
 
-int				img_update(t_img *img, t_line *param, int x, int y)
+void			img_update(t_img *img, t_line *param, int x, int y)
 {
 	param = NULL;
-	if (x >= img->win_width || y >= img->win_height || x < 0 || y < 0)
-		return (0);
-	ft_memmove(&(img->data[y * img->line_size + x * 4]), &img->map_color, 4);
-	return (1);
+	if (!(x >= img->win_width || y >= img->win_height || x < 0 || y < 0))
+		ft_memmove(&(img->data[y * img->line_size + x * 4]), &img->map_color, 4);
 }

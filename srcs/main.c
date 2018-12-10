@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 19:22:05 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 14:22:05 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int			main(int argc, char **argv)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) != -1)
 		{
+			ft_putstr("Loading Map...\n");
 			hub.map = build_map(fd);
 			if (hub.map)
 				start_window(&hub);

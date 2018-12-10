@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/09 22:15:36 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/10 10:24:42 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,14 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/colors.c					\
 						$(SRCSDIR)/map_altitudes.c			\
 						$(SRCSDIR)/img_update.c				\
+						$(SRCSDIR)/world_to_screen.c		\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs
 
 OBJS  			   :=	$(SRCS:$(SRCSDIR)/%.c=$(OBJSDIR)/%.o)
+
+DEPENDENCIES		= 	$(OBJS:%.o=%.d)
 
 INCLUDES			=   -I libft/includes 					\
 						-I includes							\
@@ -63,12 +66,10 @@ $(BINDIR)/$(NAME)	: 	$(OBJS)
 						make -C libft/
 						$(CC) -o $@ $(CFLAGS) $(INCLUDES) $(LIBS) $(OBJS)
 
-.PHONY				:	run
-run					:	$(BINDIR)/$(NAME)
-						@$(PROJDIR)/$(BINDIR)/fdf $(PROJDIR)/maps/test.fdf
+-include $(DEPENDENCIES)
 
 $(OBJS)				: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
-						$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+						$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 
 .PHONY				:	clean
 clean				:
