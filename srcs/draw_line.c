@@ -10,7 +10,7 @@
 #include "fdf.h"
 
 static void		draw_line_low(t_img *img, t_line *line,
-								t_vector p1, t_vector p2)
+								t_vector p1, t_vector p2, t_hub *hub)
 {
 	int			dx;
 	int			dy;
@@ -25,7 +25,7 @@ static void		draw_line_low(t_img *img, t_line *line,
 	dx *= 2;
 	while (p1.x <= p2.x)
 	{
-		img_update(img, line, (int)p1.x, (int)p1.y);
+		img_update(img, line, (int)p1.x, (int)p1.y, hub);
 		if (error > 0)
 		{
 			p1.y += increment;
@@ -37,7 +37,7 @@ static void		draw_line_low(t_img *img, t_line *line,
 }
 
 static void		draw_line_steep(t_img *img, t_line *line,
-								t_vector p1, t_vector p2)
+								t_vector p1, t_vector p2, t_hub *hub)
 {
 	int			dx;
 	int			dy;
@@ -52,7 +52,7 @@ static void		draw_line_steep(t_img *img, t_line *line,
 	dy *= 2;
 	while (p1.y <= p2.y)
 	{
-		img_update(img, line, (int)p1.x, (int)p1.y);
+		img_update(img, line, (int)p1.x, (int)p1.y, hub);
 		if (error > 0)
 		{
 			p1.x += increment;
@@ -63,7 +63,7 @@ static void		draw_line_steep(t_img *img, t_line *line,
 	}
 }
 
-void			draw_line(t_img *img, t_vector p1, t_vector p2)
+void			draw_line(t_img *img, t_vector p1, t_vector p2, t_hub *hub)
 {
 	t_line		line;
 
@@ -74,15 +74,15 @@ void			draw_line(t_img *img, t_vector p1, t_vector p2)
 	if (fabs((double)(p2.y - p1.y)) < fabs((double)(p2.x - p1.x)))
 	{
 		if (p2.x > p1.x)
-			draw_line_low(img, &line, p1, p2);
+			draw_line_low(img, &line, p1, p2, hub);
 		else
-			draw_line_low(img, &line, p2, p1);
+			draw_line_low(img, &line, p2, p1, hub);
 	}
 	else
 	{
 		if (p2.y > p1.y)
-			draw_line_steep(img, &line, p1, p2);
+			draw_line_steep(img, &line, p1, p2, hub);
 		else
-			draw_line_steep(img, &line, p2, p1);
+			draw_line_steep(img, &line, p2, p1, hub);
 	}
 }

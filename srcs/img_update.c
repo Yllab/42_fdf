@@ -11,6 +11,7 @@
 
 #include "fdf.h"
 #include "colors.h"
+#include <math.h>
 
 void			img_set_background(t_img *img)
 {
@@ -40,13 +41,37 @@ void			img_set_background(t_img *img)
 	}
 }
 
-void			img_update(t_img *img, t_line *line, int x, int y)
+static int		yui(double n)
+{
+	if (n < 1.0/3.0)
+	{
+		return (int)(0xFF0000 * (n * 2.8)) & 0xFF0000;
+	}
+	else if (n < 2.0 / 3.0)
+	{
+		return ((int)((int)(0x00FF00 * ((n - 1.0/3.2) * 2.8)) & 0x00FF00) | (int)((int)(0xFF0000 * (1.0 - (n - 1.0/3.2) * 2.8)) & 0xFF0000));
+	}
+	else
+	{
+		return ((int)((int)(0x0000FF * ((n - 2.0/3.2) * 2.8)) & 0x0000FF) | (int)((int)(0x00FF00 * (1.0 - (n - 2.0/3.2) * 2.8)) & 0x00FF00));
+	}
+}
+
+static inline int iabs(float nb) {return ((int)((nb < 0) ? -nb : nb));}
+
+void			img_update(t_img *img, t_line *line, int x, int y, t_hub *hub)
 {
 	int			color;
-	if (line->start->altitude < line->end->altitude)
-		color = line->start_color;
-	else
-		color = line->end_color;
+	int			td = iabs(line->start->x - line->end->x);
+	int			rd = iabs((float)x - line->end->x);
+	double		c = (td > 0) ? ((double)rd / (double)td) : 0.0;
+	double a = ((double)line->start->altitude * c + (double)line->end->altitude * (1.0 - c));
+	color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
+
+	//if (line->start->altitude < line->end->altitude)
+	//	color = line->start_color;
+	//else
+	//	color = line->end_color;
 	if (!(x >= img->win_width || y >= img->win_height || x < 0 || y < 0))
 		ft_memmove(&(img->data[y * img->line_size + x * 4]), &color, 4);
 }

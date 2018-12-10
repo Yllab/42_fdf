@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 18:40:41 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 20:47:56 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void			pt_draw(t_vector *point, t_hub *hub, int z, int x)
 		if (point->z && connected_point.z)
 		{
 			pt_to_screen(&connected_point, &(hub->camera), &(hub->img));
-			draw_line(&(hub->img), *point, connected_point);
+			//fix
+			draw_line(&(hub->img), *point, connected_point, hub);
 		}
 	}
 	if (z > 0)
@@ -54,7 +55,8 @@ static void			pt_draw(t_vector *point, t_hub *hub, int z, int x)
 		if (point->z && connected_point.z)
 		{
 			pt_to_screen(&connected_point, &(hub->camera), &(hub->img));
-			draw_line(&(hub->img), *point, connected_point);
+			//fix
+			draw_line(&(hub->img), *point, connected_point, hub);
 		}
 	}
 }
