@@ -67,10 +67,10 @@ void			draw_line(t_img *img, t_vector p1, t_vector p2)
 {
 	t_line		line;
 
-	line.start_x = p1.x;
-	line.start_y = p1.y;
-	line.end_x = p2.x;
-	line.end_y = p2.y;
+	line.start = &p1;
+	line.end = &p2;
+	line.start_color = find_color(p1);
+	line.end_color = find_color(p2);
 	if (fabs((double)(p2.y - p1.y)) < fabs((double)(p2.x - p1.x)))
 	{
 		if (p2.x > p1.x)

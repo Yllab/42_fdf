@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:38:10 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 19:16:19 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 16:50:48 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void				map_assign_altitude(t_map *map, int granularity)
 		level_size = 1;
 	else
 		level_size = (int)ceil((double)range / (double)granularity);
+	if (level_size < 1)
+		level_size = 1;
 	z = 0;
 	x = 0;
 	while (z < map->height)

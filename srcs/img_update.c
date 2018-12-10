@@ -6,24 +6,29 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 17:35:20 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 12:54:42 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 17:45:03 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "colors.h"
 
-void			img_set_background(t_img *img, int color)
+void			img_set_background(t_img *img)
 {
 	int			i;
 	int 		j;
 	int 		max_x;
 	int 		max_y;
+	int 		color;
 
 	i = 0;
 	j = 0;
 	max_x = img->win_width;
 	max_y = img->win_height;
+	if (img->night_mode)
+		color = DARK_GRAY;
+	else
+		color = LIGHT_GRAY;
 	while (i < max_y)
 	{
 		j = 0;
@@ -36,9 +41,13 @@ void			img_set_background(t_img *img, int color)
 	}
 }
 
-void			img_update(t_img *img, t_line *param, int x, int y)
+void			img_update(t_img *img, t_line *line, int x, int y)
 {
-	param = NULL;
+	int			color;
+	if (line->start->altitude < line->end->altitude)
+		color = line->start_color;
+	else
+		color = line->end_color;
 	if (!(x >= img->win_width || y >= img->win_height || x < 0 || y < 0))
-		ft_memmove(&(img->data[y * img->line_size + x * 4]), &img->map_color, 4);
+		ft_memmove(&(img->data[y * img->line_size + x * 4]), &color, 4);
 }

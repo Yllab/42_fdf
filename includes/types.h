@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 11:51:41 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 17:41:44 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,17 @@ typedef struct		s_img
 	int				bpp;
 	int				line_size;
 	int				endian;
-	int				background_color;
-	int				map_color;
+	int				night_mode;
+	int				show_ui;
+	int				ui_color;
 }					t_img;
 
 typedef struct		s_line
 {
-	int				start_x;
-	int				start_y;
-	int				end_x;
-	int				end_y;
+	t_vector		*start;
+	t_vector		*end;
+	int				start_color;
+	int				end_color;
 }					t_line;
 
 /*

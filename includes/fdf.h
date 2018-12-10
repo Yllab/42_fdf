@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 14:00:47 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 17:44:08 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ void				startup_camera(t_camera *camera, t_map *map);
 void				render(t_hub *hub);
 void				world_to_screen(t_hub *hub);
 void 				draw_line(t_img *img, t_vector p1, t_vector p2);
+int					find_color(t_vector point);
+void				img_set_background(t_img *img);
+void				draw_ui(t_img *img, t_win *win);
 void				img_update(t_img *img, t_line *param, int x, int y);
-void				img_set_background(t_img *img, int color);
 
 int					keyboard_hooks(int keycode, void *param);
 

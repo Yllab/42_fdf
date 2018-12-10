@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 22:25:40 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 18:14:38 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 static void		find_window_size(t_hub *hub)
 {
-	hub->img.win_width = 1500;
-	hub->img.win_height = 1000;
+	hub->img.win_width = 500;
+	hub->img.win_height = 500;
 }
 
 /*

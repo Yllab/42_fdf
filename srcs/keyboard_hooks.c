@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 15:39:50 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 14:14:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 18:09:13 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "keys.h"
 #include "colors.h"
 #include <math.h>
+#include <stdlib.h>
 
-void		hook_camera(int keycode, t_hub *hub)
+static void		hook_camera(int keycode, t_hub *hub)
 {
 	if (keycode == PL_KEY)
-		hub->camera.speed += 10;
+		hub->camera.speed += hub->map->width;
 	if (keycode == MN_KEY)
 	{
-		hub->camera.speed -= 10;
+		hub->camera.speed -= hub->map->width;
 		if (hub->camera.speed <= 0)
 			hub->camera.speed = 1;
 	}
@@ -65,32 +66,23 @@ void		hook_camera(int keycode, t_hub *hub)
 		hub->camera.canvas_w += 0.1;
 }
 
-void		hook_color(int keycode, t_hub *hub)
+static void		hook_ui(int keycode, t_hub *hub)
 {
-	if (keycode == B_KEY)
-	{
-		if (hub->img.background_color == DARK_GRAY)
-		{
-			hub->img.background_color = LIGHT_BLUE;
-			if (hub->img.map_color == LIGHT_BLUE)
-				hub->img.map_color = DARK_GRAY;
-		}
-		else
-		{
-			hub->img.background_color = DARK_GRAY;
-			if (hub->img.map_color == DARK_GRAY)
-				hub->img.map_color = LIGHT_BLUE;
-		}
-	}
+	if (keycode == N_KEY)
+		hub->img.night_mode = hub->img.night_mode == 1 ? 0 : 1;
+	if (keycode == H_KEY)
+		hub->img.show_ui = hub->img.show_ui == 1 ? 0 : 1;
+	if (keycode == ESC_KEY)
+		exit(0);
 }
 
-int			keyboard_hooks(int keycode, void *param)
+int				keyboard_hooks(int keycode, void *param)
 {
 	t_hub	*hub;
 
 	hub = (t_hub*)param;
 	hook_camera(keycode, hub);
-	hook_color(keycode, hub);
+	hook_ui(keycode, hub);
 	render(hub);
 	return (1);
 }
