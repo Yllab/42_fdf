@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 16:44:05 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 18:40:41 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,13 @@ void				world_to_screen(t_hub *hub)
 		{
 			point = hub->map->points[z][x];
 			pt_to_canvas(&point, &(hub->camera));
-			pt_to_screen(&point, &(hub->camera), &(hub->img));
-			pt_draw(&point, hub, z, x);
+			if (hub->camera.fullrender ||
+					!((double)fabs(point.x) > hub->camera.canvas_w / 2 ||
+						(double)fabs(point.y) > hub->camera.canvas_h / 2))
+			{
+				pt_to_screen(&point, &(hub->camera), &(hub->img));
+				pt_draw(&point, hub, z, x);
+			}
 			x++;
 		}
 		z++;

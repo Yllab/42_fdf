@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 17:41:44 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/10 19:30:32 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct		s_camera
 	float			canvas_h;
 	float			start_speed;
 	float			speed;
+	int				fullrender;
 }					t_camera;
 
 /*
@@ -94,9 +95,9 @@ typedef struct		s_img
 	int				bpp;
 	int				line_size;
 	int				endian;
-	int				night_mode;
 	int				show_ui;
-	int				ui_color;
+	int				night_mode;
+	int				background_color;
 }					t_img;
 
 typedef struct		s_line
@@ -106,6 +107,15 @@ typedef struct		s_line
 	int				start_color;
 	int				end_color;
 }					t_line;
+
+typedef struct		s_ui
+{
+	int 			color;
+	int 			a_x;
+	int 			a_y;
+	int 			line;
+	int 			line_increment;
+}					t_ui;
 
 /*
 ** Main access structure

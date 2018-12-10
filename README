@@ -18,6 +18,7 @@ d'erreur qui free la map et return
 > gestion de plusieurs perspectives
 > bug sur rotation de pi/6
 > bug sur rotation en x quand on est quasi en vue de dessus
+> free sur exit avec escape
 
 //atexit
 > remove debug from functions
