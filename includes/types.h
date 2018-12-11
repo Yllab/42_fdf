@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 19:30:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/11 19:16:23 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct		s_vector
 	float			z;
 	float			w;
 	int				altitude;
-	int				level;
+	int				level; //
 }					t_vector;
 
 /*
@@ -59,15 +59,16 @@ typedef struct		s_map
 	int				height;
 	int				min_y;
 	int				max_y;
-	int				granularity;
+	int				gradient;
+	int				granularity; //
 }					t_map;
 
 typedef struct		s_camera
 {
 	t_transform		t;
+	int				projection;
 	float			canvas_w;
 	float			canvas_h;
-	float			start_speed;
 	float			speed;
 	int				fullrender;
 }					t_camera;
@@ -79,7 +80,7 @@ typedef struct		s_camera
 typedef struct		s_win
 {
 	void			*self_id;
-	void			*mlx_id;	
+	void			*mlx_id;
 }					t_win;
 
 /*
@@ -95,26 +96,26 @@ typedef struct		s_img
 	int				bpp;
 	int				line_size;
 	int				endian;
-	int				show_ui;
 	int				night_mode;
 	int				background_color;
+	int				show_ui;
 }					t_img;
 
 typedef struct		s_line
 {
 	t_vector		*start;
 	t_vector		*end;
-	int				start_color;
-	int				end_color;
+	int				start_color; //
+	int				end_color; //
 }					t_line;
 
 typedef struct		s_ui
 {
-	int 			color;
-	int 			a_x;
-	int 			a_y;
-	int 			line;
-	int 			line_increment;
+	int				color;
+	int				a_x;
+	int				a_y;
+	int				line;
+	int				line_increment;
 }					t_ui;
 
 /*

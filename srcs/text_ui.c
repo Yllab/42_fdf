@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 19:12:41 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 19:57:08 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/11 18:06:13 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 static void			draw_ui_3(t_win *win, t_ui *ui)
 {
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "J / L    -- Horiz FOV");
-	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "I / K    -- Verti FOV");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "Q / E    -- Yaw");
+	ui->line += ui->line_increment;
+	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
+			ui->color, "P        -- Projection");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "G / T    -- Pitch");
@@ -44,7 +44,7 @@ static void			draw_ui_3(t_win *win, t_ui *ui)
 static void			draw_ui_2(t_win *win, t_ui *ui)
 {
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "P        -- Fast Mode");
+			ui->color, "X        -- Fast Mode");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "RENDER");
@@ -60,6 +60,9 @@ static void			draw_ui_2(t_win *win, t_ui *ui)
 	ui->line += ui->line_increment * 2;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "R        -- Reset");
+	ui->line += ui->line_increment;
+	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
+			ui->color, "J / L    -- Horiz FOV");
 	ui->line += ui->line_increment;
 	draw_ui_3(win, ui);
 }

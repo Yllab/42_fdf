@@ -6,13 +6,19 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 19:47:24 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 14:29:29 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/11 19:23:07 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "fdf.h"
+
+static void		free_row(void *row, size_t row_size)
+{
+	ft_memdel(&row);
+	row_size = 0;
+}
 
 static	void	ft_tabfree(char **tab, int i)
 {
@@ -27,13 +33,9 @@ static	void	ft_tabfree(char **tab, int i)
 
 static int		tab_len(char **tab)
 {
-	static int	row_count;
 	static int	len;
 	int			i;
 
-	ft_putstr("Loading - Line ");
-	ft_putnbr(row_count++);
-	ft_putstr("\n");
 	i = 0;
 	while (tab[i] != NULL)
 		i++;
@@ -42,12 +44,6 @@ static int		tab_len(char **tab)
 	else if (len != i)
 		return (0);
 	return (len);
-}
-
-static void		free_row(void *row, size_t row_size)
-{
-	ft_memdel(&row);
-	row_size = 0;
 }
 
 static int		get_row(char *line, int **result)

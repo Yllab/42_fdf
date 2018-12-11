@@ -1,28 +1,31 @@
-TODO
+// current
 
-> size of window
+> img_update
+> world_to_screen
+
+// todo
+
+> matrice de proj / proj iso
+> centrage rotation
+> cam FPS
+> choix gradient
+
+// bugfix
+> bug sur rotation en x quand on est quasi en vue de dessus
+
+// misc
+
 > research perror/strerror, errno variable
 > retour d'erreur propre/consistent 
 >> une fois get input OK, si erreur plus tard ds le programme, utiliser fct
 d'erreur qui free la map et return
 >> gestion des mallocs propre dans acquisition de l'input et build de la map
-> usage du main si pas d'arg
-> multi map
-> erreur crash si matrix inv impossible (sait on jamais)
-> del fonctions vector_copy et vector_reset si pas besoin
-> check fonctions interdites (memalloc?)
-
-> points qui ghost avec le zoom
-> controle
-> scaling du y
-> gestion de plusieurs perspectives
-> bug sur rotation de pi/6
-> bug sur rotation en x quand on est quasi en vue de dessus
-> free sur exit avec escape
+> check fonctions interdites (memmove au lieu de ft-memmove etc)
 
 //atexit
-> remove debug from functions
+
+> remove debug from functions (check printf)
 > remove debug.c from sources and from Makefile !!!
 > remove test rule from makefile
 > rm fdf_sample from bin/
-> makefile relink quand un header change
+> remove -g CFLAGS makefile

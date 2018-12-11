@@ -6,13 +6,16 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 19:01:33 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/11 19:51:57 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "matrix.h"
 #include "math.h"
+
+//debug
+#include "libft.h"
 
 static void				row_swap(t_matrix m1, int i, int j)
 {
@@ -49,7 +52,7 @@ static void				set_pivot(t_matrix m1, t_matrix m2)
 				j++;
 			}
 			if (max == i)
-				exit(1);
+				exit(1); //
 			row_swap(m1, i, max);
 			row_swap(m2, i, max);
 		}
@@ -92,6 +95,8 @@ static void				set_one(t_matrix m1, t_matrix m2, int i)
 		j = 0;
 		while (j < 4)
 		{
+			if (pivot == 0)
+				exit(1);
 			m1[i][j] /= pivot;
 			m2[i][j] /= pivot;
 			j++;
@@ -101,6 +106,7 @@ static void				set_one(t_matrix m1, t_matrix m2, int i)
 
 void					matrix_inv(t_matrix m1)
 {
+	ft_putstr("matrix inv\n");
 	t_matrix			m2;
 	int					i;
 

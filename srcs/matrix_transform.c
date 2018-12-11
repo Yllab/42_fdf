@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 22:58:13 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 18:53:24 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/11 18:20:52 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void					matrix_translate(t_matrix m, float x, float y, float z)
 {
-	t_matrix 			translate;
+	t_matrix			translate;
 
 	matrix_init(translate);
 	if (x)
