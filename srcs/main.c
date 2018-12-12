@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:30:29 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 16:11:08 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int			main(int argc, char **argv)
 				start_window(&hub);
 			exit(1);
 		}
+		else
+			exit(1);
 	}
 	else
 	{

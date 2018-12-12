@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 19:32:20 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 16:25:43 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ static void		hook_camera_1(int keycode, t_hub *hub)
 static void		hook_map(int keycode, t_hub *hub)
 {
 	if (keycode == PUP_KEY)
-		startup_map(hub->map, 0.02, 0);
+		startup_map(hub->map, 0.01, 0);
 	if (keycode == PDOWN_KEY)
-		startup_map(hub->map, -0.02, 0);
+		startup_map(hub->map, -0.01, 0);
 	if (keycode == HOME_KEY)
 		startup_map(hub->map, 0, 0.01);
 	if (keycode == END_KEY)
