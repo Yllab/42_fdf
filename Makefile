@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/11 20:24:31 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/12 17:04:11 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ $(BINDIR)/$(NAME)	: 	$(OBJS)
 -include $(DEPENDENCIES)
 
 $(OBJS)				: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
+						mkdir -p objs
 						$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 
 .PHONY				:	clean
