@@ -6,15 +6,13 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:46:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:32:04 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 18:15:44 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
 #include "colors.h"
-
-/*
 
 static int		yui(double n)
 {
@@ -35,21 +33,17 @@ static int		yui(double n)
 
 static inline int iabs(float nb) {return ((int)((nb < 0) ? -nb : nb));}
 
+
+
+void			img_update(t_hub *hub, t_line *line, int x, int y)
+{
+	int			color;
 	int			td = iabs(line->start->x - line->end->x);
 	int			rd = iabs((float)x - line->end->x);
 	double		c = (td > 0) ? ((double)rd / (double)td) : 0.0;
 	double a = ((double)line->start->altitude * c + (double)line->end->altitude * (1.0 - c));
 	color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
-
-*/
-
-void			img_update(t_hub *hub, t_line *line, int x, int y)
-{
-	int			color;
-	color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
-
-	//DEBUG
-	line = NULL;
+	//color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
 
 	if (x < hub->img.win_width &&
 		y < hub->img.win_height &&

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:08:22 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 18:18:39 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@ static void			pt_to_canvas(t_vector *point, t_camera *cam)
 		point->z = 1;
 	else
 		point->z = 0;
-
-	/*
-	if (point->z <= -0.1)
-	{
-		point->z = 1;
-		if (cam->projection == 1)
-		{
-			point->x /= -point->z;
-			point->y /= -point->z;
-		}
-	}
-	else
-		point->z = 0;
-		*/
 }
 
 static void			pt_to_screen(t_vector *point, t_camera *cam, t_img *img)
