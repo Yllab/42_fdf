@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:18:55 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:50:13 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,33 @@
 static void		hook_camera_2(int keycode, t_hub *hub)
 {
 	if (keycode == Q_KEY)
-		hub->camera.t.rotate_y += M_PI / 3; // 150
+		hub->camera.t.rotate_y += M_PI / 2;
 	if (keycode == E_KEY)
-		hub->camera.t.rotate_y -= M_PI / 3;
+		hub->camera.t.rotate_y -= M_PI / 2;
 	if (keycode == T_KEY)
-		hub->camera.t.rotate_x -= M_PI / 3;
+		hub->camera.t.rotate_x -= M_PI / 2;
 	if (keycode == G_KEY)
-		hub->camera.t.rotate_x += M_PI / 3;
-	if (keycode == I_KEY && hub->camera.canvas_h < 100)
-		hub->camera.canvas_h += 0.1;
-	if (keycode == K_KEY && hub->camera.canvas_h > 0.1)
+		hub->camera.t.rotate_x += M_PI / 2;
+	if (keycode == K_KEY && hub->camera.canvas_h < 100)
+	{
+		hub->camera.canvas_h += 0.05;
+		hub->camera.canvas_w += 0.05;
+	}
+	if (keycode == I_KEY && hub->camera.canvas_h > 0.1)
+	{
 		hub->camera.canvas_h -= 0.05;
-	if (keycode == J_KEY && hub->camera.canvas_w > 0.1)
 		hub->camera.canvas_w -= 0.05;
-	if (keycode == L_KEY && hub->camera.canvas_w < 100)
-		hub->camera.canvas_w += 0.1;
+	}
+	if (keycode == L_KEY && hub->camera.canvas_h > 0.1)
+		hub->camera.canvas_w += 0.05;
+	if (keycode == J_KEY && hub->camera.canvas_h < 100)
+		hub->camera.canvas_w -= 0.05;
 	if (keycode == P_KEY)
 	{
 		hub->camera.projection++;
 		if (hub->camera.projection > 1)
 			hub->camera.projection = 0;
-//		reset_canvas(&hub->camera);
+		reset_canvas(&hub->camera);
 	}
 }
 
@@ -67,7 +73,7 @@ static void		hook_camera_1(int keycode, t_hub *hub)
 		hub->camera.t.translate_x += 0.01 * hub->camera.speed;
 	if (keycode == R_KEY)
 		startup_camera(&(hub->camera), hub->map);
-	if (keycode == X_KEY)
+	if (keycode == F_KEY)
 		hub->camera.fullrender = hub->camera.fullrender == 0 ? 1 : 0;
 }
 

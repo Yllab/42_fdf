@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 16:31:37 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:41:21 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,8 @@ static void		create_img(t_win *win, t_img *img)
 
 static void		find_window_size(t_hub *hub)
 {
-	/*
 	hub->img.win_width = 1920;
 	hub->img.win_height = 1080;
-	*/
-	hub->img.win_width = 1500;
-	hub->img.win_height = 1000;
 }
 
 static void		create_window(t_hub *hub)
@@ -67,17 +63,13 @@ void			start_window(t_hub *hub)
 	create_window(hub);
 	if (hub->win.mlx_id && hub->win.self_id)
 	{
-		ft_putstr("//startup_scene\n");
 		startup_scene(hub);
-		ft_putstr("//render\n");
 		render(hub);
-		ft_putstr("//hook\n");
 		mlx_hook(hub->win.self_id,
 					KEYPRESS,
 					KEYPRESSMASK,
 					&keyboard_hooks,
 					hub);
-		ft_putstr("//loop\n");
 		mlx_loop(hub->win.mlx_id);
 		exit (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 19:12:41 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:06:13 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:41:03 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void			draw_ui_3(t_win *win, t_ui *ui)
 {
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "I / K    -- Verti FOV");
+			ui->color, "I / K    -- FOV");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "Q / E    -- Yaw");
@@ -44,7 +44,7 @@ static void			draw_ui_3(t_win *win, t_ui *ui)
 static void			draw_ui_2(t_win *win, t_ui *ui)
 {
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "X        -- Fast Mode");
+			ui->color, "F        -- Fast Mode");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "RENDER");
@@ -61,9 +61,6 @@ static void			draw_ui_2(t_win *win, t_ui *ui)
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "R        -- Reset");
 	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "J / L    -- Horiz FOV");
-	ui->line += ui->line_increment;
 	draw_ui_3(win, ui);
 }
 
@@ -79,7 +76,10 @@ void				draw_ui(t_img *img, t_win *win)
 	if (img->show_ui)
 	{
 		mlx_string_put(win->mlx_id, win->self_id, ui.a_x, ui.a_y + ui.line,
-				ui.color, "F1 > F4  -- Background");
+				ui.color, "1 > 5    -- Gradient");
+		ui.line += ui.line_increment;
+		mlx_string_put(win->mlx_id, win->self_id, ui.a_x, ui.a_y + ui.line,
+				ui.color, "Z X C V  -- Background");
 		ui.line += ui.line_increment;
 		mlx_string_put(win->mlx_id, win->self_id, ui.a_x, ui.a_y + ui.line,
 				ui.color, "N        -- Night Mode");

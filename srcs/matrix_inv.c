@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 19:51:57 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:41:34 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static void				set_one(t_matrix m1, t_matrix m2, int i)
 
 void					matrix_inv(t_matrix m1)
 {
-	ft_putstr("matrix inv\n");
 	t_matrix			m2;
 	int					i;
 

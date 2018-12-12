@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:17:04 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:52:19 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "matrix.h"
 #include "colors.h"
 
-/*
 void			reset_canvas(t_camera *camera)
 {
 	if (camera->projection == 1)
@@ -30,18 +29,15 @@ void			reset_canvas(t_camera *camera)
 		camera->canvas_h = 20;
 	}
 }
-*/
 
 void			startup_camera(t_camera *camera, t_map *map)
 {
 	ft_bzero(&(camera->t), sizeof(t_transform));
-	/*
 	reset_canvas(camera);
 	if (camera->projection == 1)
 		camera->speed = 4 * map->width;
 	else
 		camera->speed = 8 * map->width;
-		*/
 	camera->t.rotate_x = -M_PI / 3;
 	camera->t.rotate_y = -atan((double)map->width / (double)map->height);
 	camera->t.translate_x = -(float)map->width;
@@ -60,10 +56,10 @@ void			startup_map(t_map *map,
 	map->t.scale_z += delta_scale;
 	if (map->t.scale_x < 0.1)
 		map->t.scale_x = 0.1;
-	if (map->t.scale_y == 0)
-		map->t.scale_y += delta_elevation;
 	if (map->t.scale_z < 0.1)
 		map->t.scale_z = 0.1;
+	if (map->t.scale_y == 0)
+		map->t.scale_y += delta_elevation;
 	transform_build(&(map->t));
 	transform_apply(&(map->t), map->points, map->width, map->height);
 }
@@ -71,19 +67,13 @@ void			startup_map(t_map *map,
 void			startup_scene(t_hub *hub)
 {
 	ft_bzero(&(hub->camera), sizeof(t_camera));
-	hub->camera.projection = 1;
 
-	//DEBUG
-	hub->camera.canvas_w = 2;
-	hub->camera.canvas_h = 2;
-	hub->camera.speed = 4 * hub->map->width;
+	hub->camera.projection = 1;
 	hub->camera.fullrender = 0;
-	//
-	
-	map_assign_altitude(hub->map, 400);
+	map_assign_altitude(hub->map, 1);
 
 	hub->img.background_color = PASTEL_WHITE;
-	hub->img.night_mode = 0;
+	hub->img.night_mode = 1;
 	hub->img.show_ui = 0;
 
 	startup_map(hub->map, 0.5, 1);
