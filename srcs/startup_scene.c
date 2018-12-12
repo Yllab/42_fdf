@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 16:30:31 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:17:04 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,14 @@ void			startup_scene(t_hub *hub)
 {
 	ft_bzero(&(hub->camera), sizeof(t_camera));
 	hub->camera.projection = 1;
+
 	//DEBUG
 	hub->camera.canvas_w = 2;
 	hub->camera.canvas_h = 2;
-	hub->camera->speed = 4 * hub->map->width;
+	hub->camera.speed = 4 * hub->map->width;
+	hub->camera.fullrender = 0;
 	//
 	
-	hub->camera.fullrender = 1;
 	map_assign_altitude(hub->map, 400);
 
 	hub->img.background_color = PASTEL_WHITE;

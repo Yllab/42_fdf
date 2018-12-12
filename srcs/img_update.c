@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:46:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 20:29:53 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/12 17:18:13 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static int		yui(double n)
 static inline int iabs(float nb) {return ((int)((nb < 0) ? -nb : nb));}
 */
 
-void			img_update(t_hub *hub, t_line *line, int x, int y)
-{
 	/*
 	int			td = iabs(line->start->x - line->end->x);
 	int			rd = iabs((float)x - line->end->x);
@@ -46,12 +44,19 @@ void			img_update(t_hub *hub, t_line *line, int x, int y)
 
 	*/
 
+void			img_update(t_hub *hub, t_line *line, int x, int y)
+{
 	int			color;
-	color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
+	int			altitude;
+//	color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
 
+	color = DARK_GRAY;
+	altitude = line->start->altitude;
 	if (x <= hub->img.win_width || y <= hub->img.win_height || x > 0 || y > 0)
-		ft_memmove(&(hub->img.data[y * hub->img.line_size + x * 4]),
-					&color, 4);
+
+		ft_memmove(   	&(hub->img.data[(y * hub->img.line_size) + (x * 4)]),
+						&color,
+						sizeof(int));
 }
 
 	//if (line->start->altitude < line->end->altitude)
