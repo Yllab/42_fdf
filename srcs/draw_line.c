@@ -6,12 +6,38 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:34:49 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:13:18 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 16:18:00 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
+#include "colors.h"
+
+static void		img_update(t_hub *hub, t_line *line, int x, int y)
+{
+	int			color;
+
+	color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
+	line = NULL;
+
+	//DEBUG
+	/*
+	if (hub->img.night_mode == 1)
+	{
+		ft_putstr("x = ");
+		ft_putnbr(x);
+		ft_putstr("\ny = ");
+		ft_putnbr(y);
+		ft_putstr("\n-\n");
+	}
+	*/
+	if (x < hub->img.win_width &&
+		y < hub->img.win_height &&
+		x > 0 && y > 0)
+		ft_memmove(&(hub->img.data[(y * hub->img.line_size) + (x * 4)]),
+						&color, sizeof(int));
+}
 
 static void		draw_line_low(t_hub *hub,
 								t_line *line,

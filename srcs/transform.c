@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 18:45:28 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 18:26:57 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 16:21:32 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void				transform_build(t_transform *t)
 	matrix_rotate(m, t->rotate_x, t->rotate_y, t->rotate_z);
 	matrix_scale(m, t->scale_x, t->scale_y, t->scale_z);
 	matrix_translate(m, t->translate_x, t->translate_y, t->translate_z);
+	printf("camera transform updated, is :\n");
 	matrix_print(m);
 	matrix_copy(t->matrix, m);
 }

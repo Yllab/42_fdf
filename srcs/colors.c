@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:50:42 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 12:13:39 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,33 @@ void			img_set_background(t_img *img)
 	}
 }
 
+/*
+static int		yui(double n)
+{
+	if (n < 1.0/3.0)
+	{
+		return (int)(0xFF0000 * (n * 2.0)) & 0xFF0000;
+	}
+	else if (n < 2.0 / 3.0)
+	{
+		return ((int)((int)(0x00FF00 * ((n - 1.0/3.0) * 2.0)) & 0x00FF00) | (int)((int)(0xFF0000 * (1.0 - (n - 1.0/3.0) * 2.0)) & 0xFF0000));
+	}
+	else
+	{
+		return ((int)((int)(0x0000FF * ((n - 2.0/3.0) * 3.0)) & 0x0000FF) | (int)((int)(0x00FF00 * (1.0 - (n - 2.0/3.0) * 2.0)) & 0x00FF00));
+	}
+
+}
+
+static inline int iabs(float nb) {return ((int)((nb < 0) ? -nb : nb));}
+
+	int			td = iabs(line->start->x - line->end->x);
+	int			rd = iabs((float)x - line->end->x);
+	double		c = (td > 0) ? ((double)rd / (double)td) : 0.0;
+	double a = ((double)line->start->altitude * c + (double)line->end->altitude * (1.0 - c));
+	color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
+
+
 int				find_color(t_vector point) //
 {
 	if (point.level == 1)
@@ -54,3 +81,5 @@ int				find_color(t_vector point) //
 		return (PASTEL_RED);
 	return (MEDIUM_GRAY);
 }
+
+*/

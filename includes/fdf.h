@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:47:23 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 12:16:12 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void				draw_line(t_hub *hub, t_vector p1, t_vector p2);
 
 int					find_color(t_vector point);
 void				img_set_background(t_img *img);
-void				img_update(t_hub *hub, t_line *param, int x, int y);
 
 void				draw_ui(t_img *img, t_win *win);
 
