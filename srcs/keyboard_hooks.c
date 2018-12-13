@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:35:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:57:11 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		hook_camera_2(int keycode, t_hub *hub)
 		hub->camera.projection++;
 		if (hub->camera.projection > 1)
 			hub->camera.projection = 0;
-		reset_canvas(&hub->camera);
+		reset_canvas(&hub->camera, hub->map);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:36:21 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 20:06:12 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "matrix.h"
 #include "colors.h"
 
-void			reset_canvas(t_camera *camera)
+void			reset_canvas(t_camera *camera, t_map *map)
 {
 	if (camera->projection == 1)
 	{
@@ -25,23 +25,25 @@ void			reset_canvas(t_camera *camera)
 	}
 	else
 	{
-		camera->canvas_w = 20;
-		camera->canvas_h = 20;
+		camera->canvas_w = 1000;
+		camera->canvas_h = 1000;
 	}
+	map = NULL;
 }
 
 void			startup_camera(t_camera *camera, t_map *map)
 {
 	ft_bzero(&(camera->t), sizeof(t_transform));
-	reset_canvas(camera);
+	reset_canvas(camera, map);
 	if (camera->projection == 1)
 		camera->speed = 2 * map->width;
 	else
 		camera->speed = 8 * map->width;
 
-	camera->t.translate_z = (float)map->height;
+	camera->t.translate_x = (float)map->width / 2;
+	camera->t.translate_z = (float)map->height + (float)(map->height / 2);
 	camera->t.translate_y = (double)map->height / tan(M_PI_4);
-	camera->t.rotate_x = -M_PI/4;
+	camera->t.rotate_x = -M_PI_4;
 	/*
 	camera->t.translate_x = (float)map->width / 2;
 	camera->t.rotate_x = -M_PI / 3;
@@ -72,8 +74,6 @@ void			transform_map(t_map *map,
 
 void			startup_map(t_map *map)
 {
-	map->t.translate_x -= (float)(map->width) / 2;
-	map->t.translate_z -= (float)(map->height) / 2;
 	transform_map(map, 0.5, 1);
 }
 
