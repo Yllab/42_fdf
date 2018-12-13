@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 17:28:40 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 18:02:59 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void				set_pivot(t_matrix m1, t_matrix m2)
 					max = j;
 				j++;
 			}
-			if (max == i)
-				exit(1); //
 			row_swap(m1, i, max);
 			row_swap(m2, i, max);
 		}
