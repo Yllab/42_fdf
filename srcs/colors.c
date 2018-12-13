@@ -6,14 +6,17 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 12:13:39 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:37:04 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <colors.h>
-#include <types.h>
+#include <math.h>
 #include "libft.h"
+#include "colors.h"
+#include "types.h"
 
+//debug
+#include "fdf.h"
 void			img_set_background(t_img *img)
 {
 	int			i;
@@ -42,7 +45,27 @@ void			img_set_background(t_img *img)
 	}
 }
 
+int				pixel_color(t_hub *hub, t_line *line, int x, int y)
+{
+	double		total;
+	double		remaining;
+	double		coeff;
+	double		alti;
+	int			color;
+
+	y = 0;
+	total = fabs((double)(line->start->x - line->end->x));
+	remaining = fabs((double)((float)x - line->end->x));
+	coeff = total > 0.0 ? remaining / total : 0.0;
+	alti = coeff * line->start->alti * line->end->alti * (1.0 - coeff);
+	coeff = 1 - (alti - hub->map->min_y) / (hub->map->max_y - hub->map->min_y);
+	color = coeff * 0xFFFFFF;
+	printf("%d\n", color);
+	return (color);
+}
+
 /*
+color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
 static int		yui(double n)
 {
 	if (n < 1.0/3.0)
@@ -60,15 +83,6 @@ static int		yui(double n)
 
 }
 
-static inline int iabs(float nb) {return ((int)((nb < 0) ? -nb : nb));}
-
-	int			td = iabs(line->start->x - line->end->x);
-	int			rd = iabs((float)x - line->end->x);
-	double		c = (td > 0) ? ((double)rd / (double)td) : 0.0;
-	double a = ((double)line->start->altitude * c + (double)line->end->altitude * (1.0 - c));
-	color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
-
-
 int				find_color(t_vector point) //
 {
 	if (point.level == 1)
@@ -83,3 +97,4 @@ int				find_color(t_vector point) //
 }
 
 */
+

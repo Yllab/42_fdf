@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_altitudes.c                                    :+:      :+:    :+:   */
+/*   map_altis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:38:10 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 20:39:51 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:21:18 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,25 @@ static int			map_find_range(t_map *map)
 
 	z = 0;
 	x = 0;
-	map->min_y = 0;
-	map->max_y = 0;
+	map->min_y = 0.0;
+	map->max_y = 0.0;
 	while (z < map->height)
 	{
 		x = 0;
 		while (x < map->width)
 		{
-			if (map->points[z][x].y > map->max_y)
-				map->max_y = map->points[z][x].y;
-			else if (map->points[z][x].y < map->min_y)
-				map->min_y = map->points[z][x].y;
+			if ((double)map->points[z][x].y > map->max_y)
+				map->max_y = (double)map->points[z][x].y;
+			else if ((double)map->points[z][x].y < map->min_y)
+				map->min_y = (double)map->points[z][x].y;
 			x++;
 		}
 		z++;
 	}
-	return (map->max_y - map->min_y);
+	return ((int)(map->max_y - map->min_y));
 }
 
-void				map_assign_altitude(t_map *map, int granularity)
+void				map_assign_alti(t_map *map, int granularity)
 {
 	int				z;
 	int				x;
@@ -64,7 +64,7 @@ void				map_assign_altitude(t_map *map, int granularity)
 			while ((map->min_y + level * level_size) < map->points[z][x].y)
 				level++;
 			map->points[z][x].level = level;
-			map->points[z][x].altitude = map->points[z][x].y;
+			map->points[z][x].alti = (double)map->points[z][x].y;
 			x++;
 		}
 		z++;

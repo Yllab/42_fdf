@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 18:08:45 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:35:32 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,10 @@
 
 static void		hook_camera_2(int keycode, t_hub *hub)
 {
-	/*
 	if (keycode == Q_KEY)
 		hub->camera.t.rotate_y += M_PI / 50;
 	if (keycode == E_KEY)
 		hub->camera.t.rotate_y -= M_PI / 50;
-	*/
-	if (keycode == Q_KEY)
-		transform_map(hub->map, 0, 0, M_PI / 50);
-	if (keycode == E_KEY)
-		transform_map(hub->map, 0, 0, -M_PI / 50);
 	if (keycode == T_KEY)
 		hub->camera.t.rotate_x -= M_PI / 50;
 	if (keycode == G_KEY)
@@ -86,13 +80,13 @@ static void		hook_camera_1(int keycode, t_hub *hub)
 static void		hook_map(int keycode, t_hub *hub)
 {
 	if (keycode == PUP_KEY)
-		transform_map(hub->map, 0.01, 0, 0);
+		transform_map(hub->map, 0.01, 0);
 	if (keycode == PDOWN_KEY)
-		transform_map(hub->map, -0.01, 0, 0);
+		transform_map(hub->map, -0.01, 0);
 	if (keycode == HOME_KEY)
-		transform_map(hub->map, 0, 0.01, 0);
+		transform_map(hub->map, 0, 0.01);
 	if (keycode == END_KEY)
-		transform_map(hub->map, 0, -0.01, 0);
+		transform_map(hub->map, 0, -0.01);
 	if (keycode == K1_KEY)
 		hub->map->gradient = 1;
 	if (keycode == K2_KEY)

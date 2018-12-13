@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 18:21:42 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:36:21 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,13 @@ void			startup_camera(t_camera *camera, t_map *map)
 
 void			transform_map(t_map *map,
 								float delta_elevation,
-								float delta_scale,
-								float delta_rotation)
+								float delta_scale)
 {
-	t_transform	t;
-
-	t.translate_x = (float)(map->width) / 2;
-	t.translate_y = (float)(map->width) / 2;
-	transform_build(&t);
-	matrix_inv(t.matrix);
-	transform_apply(&t, map->points, map->width, map->height);
-	
 	matrix_inv(map->t.matrix);
 	transform_apply(&(map->t), map->points, map->width, map->height);
-
-
 	map->t.scale_x += delta_scale;
 	map->t.scale_y += delta_elevation;
 	map->t.scale_z += delta_scale;
-	map->t.rotate_y += delta_rotation;
 	if (map->t.scale_x < 0.1)
 		map->t.scale_x = 0.1;
 	if (map->t.scale_z < 0.1)
@@ -84,10 +72,9 @@ void			transform_map(t_map *map,
 
 void			startup_map(t_map *map)
 {
-//	map->t.translate_x -= (float)(map->width) / 2;
-//	map->t.translate_z -= (float)(map->height) / 2;
-	transform_build(&(map->t));
-	transform_apply(&(map->t), map->points, map->width, map->height);
+	map->t.translate_x -= (float)(map->width) / 2;
+	map->t.translate_z -= (float)(map->height) / 2;
+	transform_map(map, 0.5, 1);
 }
 
 void			startup_scene(t_hub *hub)
@@ -96,13 +83,12 @@ void			startup_scene(t_hub *hub)
 
 	hub->camera.projection = 1;
 	hub->camera.fullrender = 0;
-	map_assign_altitude(hub->map, 1);
+	map_assign_alti(hub->map, 1);
 
 	hub->img.background_color = PASTEL_WHITE;
 	hub->img.night_mode = 1;
 	hub->img.show_ui = 0;
 
 	startup_map(hub->map);
-	transform_map(hub->map, 0.5, 1, 0);
 	startup_camera(&(hub->camera), hub->map);
 }

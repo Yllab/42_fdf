@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 16:09:20 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:21:56 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_vector
 	float			y;
 	float			z;
 	float			w;
-	int				altitude;
+	double			alti;
 	int				level; //
 }					t_vector;
 
@@ -57,10 +57,10 @@ typedef struct		s_map
 	t_vector		**points;
 	int				width;
 	int				height;
-	int				min_y;
-	int				max_y;
 	int				gradient;
 	int				granularity; //
+	double			min_y;
+	double			max_y;
 }					t_map;
 
 typedef struct		s_camera
