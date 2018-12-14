@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 12:08:21 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 13:01:41 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void			startup_camera(t_camera *camera, t_map *map)
 		camera->speed = 2 * map->width;
 	else
 		camera->speed = 8 * map->width;
-	camera->t.translate_z = (float)map->height + (float)(map->height / 2);
-	camera->t.translate_y = (double)map->height / tan(M_PI_4);
+	camera->t.translate_z = (float)map->height * 2;
+	camera->t.translate_y = ((double)map->height / 2) / tan(M_PI_4);
 	camera->t.rotate_x = -M_PI_4;
 }
 
@@ -49,7 +49,6 @@ void			transform_map(t_map *map,
 								float delta_scale)
 {
 
-	printf("TRANSFORM MAP\n");
 	matrix_inv(map->t.matrix);
 	transform_apply(&(map->t), map->points, map->width, map->height);
 	map->t.scale_x += delta_scale;
@@ -61,22 +60,15 @@ void			transform_map(t_map *map,
 		map->t.scale_z = 0.1;
 	if (map->t.scale_y == 0)
 		map->t.scale_y += delta_elevation;
-
-
-	//debug
-//	matrix_print(map->t.matrix);
-	printf("ROTATE VALUES %f %f\n", map->t.scale_x, map->t.scale_z);
-//
-//
 	transform_build(&(map->t));
 	transform_apply(&(map->t), map->points, map->width, map->height);
-	printf("END TRANSFORM MAP\n");
 }
 
 void			startup_map(t_map *map)
 {
-	map->t.translate_x = (float)(-map->width / 2);
-	map->t.translate_z = (float)(-map->height / 2);
+	map->t.scale_x = 0;
+	map->t.scale_z = 0;
+	map->t.scale_y = 0;
 	transform_map(map, 1, 1);
 }
 
@@ -93,6 +85,8 @@ void			startup_scene(t_hub *hub)
 	hub->img.night_mode = 1;
 	hub->img.show_ui = 0;
 
+	hub->map->t.translate_x = (float)(-hub->map->width / 2);
+	hub->map->t.translate_z = (float)(-hub->map->height / 2);
 	startup_map(hub->map);
 	startup_camera(&(hub->camera), hub->map);
 }

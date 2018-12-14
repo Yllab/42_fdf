@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 12:17:33 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 12:22:14 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void				set_pivot(t_matrix m1, t_matrix m2)
 		}
 		i++;
 	}
-	matrix_print(m1);
 }
 
 static void				set_zero(t_matrix m1, t_matrix m2, int i)

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 11:23:05 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 12:50:33 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void				transform_apply(t_transform *t,
 									int height);
 
 void				startup_scene(t_hub *hub);
+void				startup_map(t_map *map);
 void				startup_camera(t_camera *camera, t_map *map);
 void				reset_canvas(t_camera *camera, t_map *map);
 

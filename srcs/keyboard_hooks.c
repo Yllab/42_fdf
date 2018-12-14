@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 12:05:36 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 13:02:02 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 #include "keys.h"
 #include "colors.h"
 
-static void		hook_camera_2(int keycode, t_hub *hub)
+static void		hook_1(int keycode, t_hub *hub)
 {
-	if (keycode == Q_KEY)
+	if (keycode == LSFT_KEY || keycode == RSFT_KEY)
+		hub->camera.autorotate = hub->camera.autorotate ? 0 : 1;
+	if (keycode == LEFT_KEY)
 		hub->camera.t.rotate_y += M_PI / 50;
-	if (keycode == E_KEY)
+	if (keycode == RIGHT_KEY)
 		hub->camera.t.rotate_y -= M_PI / 50;
-	if (keycode == T_KEY)
+	if (keycode == UP_KEY)
 		hub->camera.t.rotate_x -= M_PI / 50;
-	if (keycode == G_KEY)
+	if (keycode == DOWN_KEY)
 		hub->camera.t.rotate_x += M_PI / 50;
 	if (keycode == K_KEY && hub->camera.canvas_h < 100)
 	{
@@ -40,28 +42,21 @@ static void		hook_camera_2(int keycode, t_hub *hub)
 		hub->camera.canvas_w += 0.05;
 	if (keycode == J_KEY && hub->camera.canvas_h < 100)
 		hub->camera.canvas_w -= 0.05;
-	if (keycode == P_KEY)
-	{
-		hub->camera.projection++;
-		if (hub->camera.projection > 1)
-			hub->camera.projection = 0;
-		reset_canvas(&hub->camera, hub->map);
-	}
 }
 
-static void		hook_camera_1(int keycode, t_hub *hub)
+static void		hook_2(int keycode, t_hub *hub)
 {
 	if (keycode == PL_KEY)
 		hub->camera.speed += hub->map->width;
 	if (keycode == MN_KEY)
 	{
 		hub->camera.speed -= hub->map->width;
-		if (hub->camera.speed <= 0)
+		if (hub->camera.speed <= 0.001)
 			hub->camera.speed = 1;
 	}
-	if (keycode == UP_KEY)
+	if (keycode == E_KEY)
 		hub->camera.t.translate_y += 0.01 * hub->camera.speed;
-	if (keycode == DOWN_KEY)
+	if (keycode == Q_KEY)
 		hub->camera.t.translate_y -= 0.01 * hub->camera.speed;
 	if (keycode == W_KEY)
 		hub->camera.t.translate_z -= 0.01 * hub->camera.speed;
@@ -71,18 +66,23 @@ static void		hook_camera_1(int keycode, t_hub *hub)
 		hub->camera.t.translate_z += 0.01 * hub->camera.speed;
 	if (keycode == D_KEY)
 		hub->camera.t.translate_x += 0.01 * hub->camera.speed;
-	if (keycode == R_KEY)
-		startup_camera(&(hub->camera), hub->map);
 	if (keycode == F_KEY)
 		hub->camera.fullrender = hub->camera.fullrender == 0 ? 1 : 0;
 }
 
-static void		hook_map(int keycode, t_hub *hub)
+static void		hook_3(int keycode, t_hub *hub)
 {
+	if (keycode == P_KEY)
+	{
+		hub->camera.projection++;
+		if (hub->camera.projection > 1)
+			hub->camera.projection = 0;
+		reset_canvas(&hub->camera, hub->map);
+	}
 	if (keycode == PUP_KEY)
-		transform_map(hub->map, 0.03, 0);
+		transform_map(hub->map, 0.06, 0);
 	if (keycode == PDOWN_KEY)
-		transform_map(hub->map, -0.03, 0);
+		transform_map(hub->map, -0.06, 0);
 	if (keycode == HOME_KEY)
 		transform_map(hub->map, 0, 0.03);
 	if (keycode == END_KEY)
@@ -99,11 +99,9 @@ static void		hook_map(int keycode, t_hub *hub)
 		hub->map->gradient = 5;
 }
 
-static void		hook_ui(int keycode, t_hub *hub)
+static void		hook_4(int keycode, t_hub *hub)
 {
-	if (keycode == Z_KEY ||
-			keycode == X_KEY ||
-			keycode == C_KEY ||
+	if (keycode == Z_KEY || keycode == X_KEY || keycode == C_KEY ||
 			keycode == V_KEY)
 	{
 		if (keycode == Z_KEY)
@@ -122,6 +120,11 @@ static void		hook_ui(int keycode, t_hub *hub)
 		hub->img.show_ui = hub->img.show_ui == 1 ? 0 : 1;
 	if (keycode == ESC_KEY)
 		exit(0);
+	if (keycode == R_KEY)
+	{
+		startup_map(hub->map);
+		startup_camera(&(hub->camera), hub->map);
+	}
 }
 
 int				keyboard_hooks(int keycode, void *param)
@@ -129,10 +132,10 @@ int				keyboard_hooks(int keycode, void *param)
 	t_hub	*hub;
 
 	hub = (t_hub*)param;
-	hook_camera_1(keycode, hub);
-	hook_camera_2(keycode, hub);
-	hook_map(keycode, hub);
-	hook_ui(keycode, hub);
+	hook_1(keycode, hub);
+	hook_2(keycode, hub);
+	hook_3(keycode, hub);
+	hook_4(keycode, hub);
 	if (hub->camera.autorotate)
 		hub->camera.t.rotate_y += M_PI / 300;
 	render(hub);

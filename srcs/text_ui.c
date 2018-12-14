@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 19:12:41 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 18:02:41 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 13:44:07 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@
 static void			draw_ui_3(t_win *win, t_ui *ui)
 {
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "I / K    -- FOV");
-	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "Q / E    -- Yaw");
-	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "P        -- Projection");
-	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "G / T    -- Pitch");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "+ / -    -- Speed");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "Arrows   -- Up/Down");
+			ui->color, "I / K    -- Zoom");
+	ui->line += ui->line_increment;
+	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
+			ui->color, "Arrows   -- Rotation");
+	ui->line += ui->line_increment;
+	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
+			ui->color, "Q / E    -- Up/Down");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "WASD     -- Move");
