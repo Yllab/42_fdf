@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:21:56 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 11:33:22 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_camera
 	float			canvas_h;
 	float			speed;
 	int				fullrender;
+	int				autorotate;
 }					t_camera;
 
 /*

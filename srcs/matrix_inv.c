@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:47:39 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 11:41:45 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,15 @@ static void				set_one(t_matrix m1, t_matrix m2, int i)
 	}
 }
 
+//debug
+#include "fdf.h"
 void					matrix_inv(t_matrix m1)
 {
 	t_matrix			m2;
 	int					i;
+
+	printf("IN\n");
+	matrix_print(m1);
 
 	matrix_init(m2);
 	set_pivot(m1, m2);
@@ -111,5 +116,8 @@ void					matrix_inv(t_matrix m1)
 		set_zero(m1, m2, i);
 		i++;
 	}
+
+	printf("OUT\n");
+	matrix_print(m2);
 	matrix_copy(m1, m2);
 }

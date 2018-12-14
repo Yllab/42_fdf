@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:57:11 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 11:35:58 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ static void		hook_camera_1(int keycode, t_hub *hub)
 static void		hook_map(int keycode, t_hub *hub)
 {
 	if (keycode == PUP_KEY)
-		transform_map(hub->map, 0.01, 0);
+		transform_map(hub->map, 0.02, 0);
 	if (keycode == PDOWN_KEY)
-		transform_map(hub->map, -0.01, 0);
+		transform_map(hub->map, -0.02, 0);
 	if (keycode == HOME_KEY)
 		transform_map(hub->map, 0, 0.01);
 	if (keycode == END_KEY)
@@ -133,6 +133,8 @@ int				keyboard_hooks(int keycode, void *param)
 	hook_camera_2(keycode, hub);
 	hook_map(keycode, hub);
 	hook_ui(keycode, hub);
+	if (hub->camera.autorotate)
+		hub->camera.t.rotate_y += M_PI / 300;
 	render(hub);
-	return (1);
+	return (0);
 }

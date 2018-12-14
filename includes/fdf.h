@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:56:12 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 11:23:05 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int					get_next_line(const int fd, char **line);
 
 void				start_window(t_hub *hub);
 int					keyboard_hooks(int keycode, void *param);
+int					loop_hook(void *param);
 
 void				vector_reset(t_vector *v);
 void				vect_mat_mul(t_vector *v1, const t_matrix m);
 
 void				transform_build(t_transform *t);
+void				transform_build_world(t_transform *t);
 void				transform_apply(t_transform *t,
 									t_vector **points,
 									int width,

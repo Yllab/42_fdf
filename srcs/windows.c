@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 17:41:21 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 11:23:09 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			start_window(t_hub *hub)
 					KEYPRESSMASK,
 					&keyboard_hooks,
 					hub);
+		mlx_loop_hook (hub->win.mlx_id, &loop_hook, hub);
 		mlx_loop(hub->win.mlx_id);
 		exit (1);
 	}
