@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 14:29:45 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:41:54 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void		fill_map(t_map *map, t_list *map_raw)
 	int			x;
 	int			y;
 	int			z;
-	//DEBUG or move elsewhere
-	static int count;
 
 	x = 0;
 	y = 0;
@@ -38,10 +36,6 @@ static void		fill_map(t_map *map, t_list *map_raw)
 		if (!(map->points[z]))
 			exit(1);
 		x = 0;
-		//DEBUG or move elsewhere
-		ft_putstr("Building Map - Line ");
-		ft_putnbr(count++);
-		ft_putstr("\n");
 		while (x < map->width)
 		{
 			y = *(int*)(map_raw->content + x * sizeof(int));

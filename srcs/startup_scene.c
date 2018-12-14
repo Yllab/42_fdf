@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 18:16:19 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 18:48:25 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ void			startup_camera(t_camera *camera, t_map *map)
 {
 	ft_bzero(&(camera->t), sizeof(t_transform));
 	reset_canvas(camera, map);
-	camera->speed = map->width + map->height;
-	camera->t.translate_z = (float)map->height * 2;
-	camera->t.translate_y = ((double)map->height / 2) / tan(M_PI_4);
-	camera->t.rotate_x = -M_PI_4;
+	camera->speed = map->scale;
+	camera->t.translate_z = (float)map->scale;
 }
 
 void			startup_map(t_map *map)
