@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 17:02:42 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 17:53:11 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void			pt_to_canvas(t_vector *point, t_camera *cam)
 
 static void			pt_to_screen(t_vector *point, t_camera *cam, t_img *img)
 {
-	point->x = (point->x + cam->canvas_w / 2) / cam->canvas_w;
-	point->y = (point->y + cam->canvas_h / 2) / cam->canvas_h;
+	point->x = (point->x + cam->canvas / 2) / cam->canvas;
+	point->y = (point->y + cam->canvas / 2) / cam->canvas;
 	point->x = floor((double)(point->x * img->win_width));
 	point->y = floor((double)((1 - point->y) * img->win_height));
 }
@@ -79,8 +79,8 @@ void				world_to_screen(t_hub *hub)
 			point = hub->map->points[z][x];
 			pt_to_canvas(&point, &(hub->camera));
 			if (hub->camera.fullrender ||
-					!((double)fabs(point.x) > hub->camera.canvas_w / 2 ||
-						(double)fabs(point.y) > hub->camera.canvas_h / 2))
+					!((double)fabs(point.x) > hub->camera.canvas / 2 ||
+						(double)fabs(point.y) > hub->camera.canvas / 2))
 			{
 				pt_to_screen(&point, &(hub->camera), &(hub->img));
 				pt_draw(&point, hub, z, x);
