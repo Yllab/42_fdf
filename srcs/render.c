@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:44:16 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 11:09:06 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 16:29:52 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void				render(t_hub *hub)
 {
 	ft_bzero(hub->img.data, hub->img.line_size * hub->img.win_height);
 	img_set_background(&(hub->img));
-	//DEBUG
 //	transform_build(&(hub->camera.t));
 	transform_build_world(&(hub->camera.t));
 	matrix_inv(hub->camera.t.matrix);

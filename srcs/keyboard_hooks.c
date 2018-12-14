@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 16:08:33 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 16:33:37 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void		hook_1(int keycode, t_hub *hub)
 		hub->camera.canvas_h -= 0.05;
 		hub->camera.canvas_w -= 0.05;
 	}
-	if (keycode == L_KEY && hub->camera.canvas_h > 0.1)
+	if (keycode == L_KEY && hub->camera.canvas_w < 100)
 		hub->camera.canvas_w += 0.05;
-	if (keycode == J_KEY && hub->camera.canvas_h < 100)
+	if (keycode == J_KEY && hub->camera.canvas_w > 0.1)
 		hub->camera.canvas_w -= 0.05;
 }
 
@@ -138,6 +138,11 @@ int				keyboard_hooks(int keycode, void *param)
 	hook_4(keycode, hub);
 	if (hub->camera.autorotate)
 		hub->camera.t.rotate_y += M_PI / 300;
+	if (hub->camera.t.translate_x > 1000 ||
+			hub->camera.t.translate_y > 1000 ||
+			hub->camera.t.translate_z > 1000)
+		startup_camera(&(hub->camera), hub->map);
+	printf("%f\n", hub->camera.t.translate_x);
 	render(hub);
 	return (0);
 }

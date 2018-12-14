@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 15:53:03 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 16:27:35 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,33 @@ void			reset_canvas(t_camera *camera, t_map *map)
 	map = NULL;
 }
 
+void			transform_map(t_map *map,
+								float delta_elevation,
+								float delta_scale)
+{
+	matrix_inv(map->t.matrix);
+	transform_apply(&(map->t), map->points, map->width, map->height);
+	map->t.scale_x += delta_scale;
+	map->t.scale_z += delta_scale;
+	map->t.scale_y += delta_elevation;
+	if (map->t.scale_x < 0.1)
+	{
+		map->t.scale_x = 0.1;
+		map->t.scale_z = 0.1;
+	}
+	if (map->t.scale_x > 10)
+	{
+		map->t.scale_x = 10;
+		map->t.scale_z = 10;
+	}
+	if (map->t.scale_y == 0)
+		map->t.scale_y += delta_elevation;
+	if (map->t.scale_y < -10 || map->t.scale_y > 10)
+		map->t.scale_y = 1;
+	transform_build(&(map->t));
+	transform_apply(&(map->t), map->points, map->width, map->height);
+}
+
 void			startup_camera(t_camera *camera, t_map *map)
 {
 	ft_bzero(&(camera->t), sizeof(t_transform));
@@ -42,26 +69,6 @@ void			startup_camera(t_camera *camera, t_map *map)
 	camera->t.translate_z = (float)map->height * 2;
 	camera->t.translate_y = ((double)map->height / 2) / tan(M_PI_4);
 	camera->t.rotate_x = -M_PI_4;
-}
-
-void			transform_map(t_map *map,
-								float delta_elevation,
-								float delta_scale)
-{
-
-	matrix_inv(map->t.matrix);
-	transform_apply(&(map->t), map->points, map->width, map->height);
-	map->t.scale_x += delta_scale;
-	map->t.scale_y += delta_elevation;
-	map->t.scale_z += delta_scale;
-	if (map->t.scale_x < 0.1)
-		map->t.scale_x = 0.1;
-	if (map->t.scale_z < 0.1)
-		map->t.scale_z = 0.1;
-	if (map->t.scale_y == 0)
-		map->t.scale_y += delta_elevation;
-	transform_build(&(map->t));
-	transform_apply(&(map->t), map->points, map->width, map->height);
 }
 
 void			startup_map(t_map *map)
