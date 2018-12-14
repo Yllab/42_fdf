@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 16:33:37 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 16:58:46 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		hook_1(int keycode, t_hub *hub)
 		hub->camera.t.rotate_x -= M_PI / 50;
 	if (keycode == DOWN_KEY)
 		hub->camera.t.rotate_x += M_PI / 50;
-	if (keycode == K_KEY && hub->camera.canvas_h < 100)
+	if (keycode == K_KEY && hub->camera.canvas_h < 1000)
 	{
 		hub->camera.canvas_h += 0.05;
 		hub->camera.canvas_w += 0.05;
@@ -38,7 +38,7 @@ static void		hook_1(int keycode, t_hub *hub)
 		hub->camera.canvas_h -= 0.05;
 		hub->camera.canvas_w -= 0.05;
 	}
-	if (keycode == L_KEY && hub->camera.canvas_w < 100)
+	if (keycode == L_KEY && hub->camera.canvas_w < 1000)
 		hub->camera.canvas_w += 0.05;
 	if (keycode == J_KEY && hub->camera.canvas_w > 0.1)
 		hub->camera.canvas_w -= 0.05;
@@ -74,9 +74,8 @@ static void		hook_3(int keycode, t_hub *hub)
 {
 	if (keycode == P_KEY)
 	{
-		hub->camera.projection++;
-		if (hub->camera.projection > 1)
-			hub->camera.projection = 0;
+		hub->camera.proj = hub->camera.proj ? 0 : 1;
+		startup_camera(&(hub->camera), hub->map);
 		reset_canvas(&hub->camera, hub->map);
 	}
 	if (keycode == PUP_KEY)

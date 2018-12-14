@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/13 19:51:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 17:02:42 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void			pt_to_canvas(t_vector *point, t_camera *cam)
 {
 	vect_mat_mul(point, cam->t.matrix);
 
-	if (cam->projection == 1)
+	if (cam->proj == 1)
 	{
 		point->x /= -point->z;
 		point->y /= -point->z;
