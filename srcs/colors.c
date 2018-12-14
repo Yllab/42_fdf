@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 13:53:00 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 13:56:23 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,9 @@ int				pixel_color(t_hub *hub, t_line *line, int x, int y)
 	printf("remaining %f\n", remaining);
 	coeff = total > 0.0 ? remaining / total : 0.0;
 	printf("coeff %f\n", coeff);
-	alti = coeff * (line->start->alti / line->end->alti) * (1.0 - coeff);
+	alti = line->start->alti * coeff + line->end->alti * (1.0 - coeff);
 	printf("alti %f\n", alti);
 	coeff = 1 - (alti - hub->map->min_y) / (hub->map->max_y - hub->map->min_y);
-
 
 	color = coeff * 0xFFFFFF;
 	printf("%d\n", color);
