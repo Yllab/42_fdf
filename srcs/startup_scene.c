@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 11:43:12 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 12:08:21 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void			transform_map(t_map *map,
 								float delta_elevation,
 								float delta_scale)
 {
+
+	printf("TRANSFORM MAP\n");
 	matrix_inv(map->t.matrix);
 	transform_apply(&(map->t), map->points, map->width, map->height);
 	map->t.scale_x += delta_scale;
@@ -63,11 +65,12 @@ void			transform_map(t_map *map,
 
 	//debug
 //	matrix_print(map->t.matrix);
-	printf("%f %f\n", map->t.scale_x, map->t.scale_z);
+	printf("ROTATE VALUES %f %f\n", map->t.scale_x, map->t.scale_z);
 //
 //
 	transform_build(&(map->t));
 	transform_apply(&(map->t), map->points, map->width, map->height);
+	printf("END TRANSFORM MAP\n");
 }
 
 void			startup_map(t_map *map)
@@ -83,7 +86,7 @@ void			startup_scene(t_hub *hub)
 
 	hub->camera.projection = 1;
 	hub->camera.fullrender = 1;
-	hub->camera.autorotate = 0;
+	hub->camera.autorotate = 1;
 	map_assign_alti(hub->map, 1);
 
 	hub->img.background_color = PASTEL_WHITE;
