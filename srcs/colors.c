@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 13:56:23 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:42:28 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,62 +45,43 @@ void			img_set_background(t_img *img)
 	}
 }
 
-int				pixel_color(t_hub *hub, t_line *line, int x, int y)
+int				pick_color(t_hub *hub, t_line *line, double coeff)
+{
+	if (line->start->alti < 0 || line->end->alti < 0)
+	{
+		if (line->start->alti < 0 && line->end->alti < 0)
+			return (hub->theme.deep_sea);
+		else
+			return (hub->theme.plains_low);
+	}
+	if (!(int)line->start->alti || !(int)line->end->alti)
+	{
+		if (!(int)line->start->alti && !(int)line->end->alti)
+			return (hub->theme.sea);
+		else
+			return (hub->theme.plains_low);
+	}
+	if (coeff >= 0 && coeff < 0.25)
+		return (hub->theme.plains_low);
+	if (coeff >= 0.25 && coeff < 0.50)
+		return (hub->theme.plains_high);
+	if (coeff >= 0.50 && coeff < 0.75)
+		return (hub->theme.mountain_low);
+	else
+		return (hub->theme.mountain_high);
+}
+
+int				pixel_color(t_hub *hub, t_line *line, int x)
 {
 	double		total;
 	double		remaining;
 	double		coeff;
 	double		alti;
-	int			color;
-
-	y = 0;
 
 	total = fabs((double)(line->start->x - line->end->x));
-	printf("total %f\n", total);
 	remaining = fabs((double)((float)x - line->end->x));
-	printf("remaining %f\n", remaining);
 	coeff = total > 0.0 ? remaining / total : 0.0;
-	printf("coeff %f\n", coeff);
 	alti = line->start->alti * coeff + line->end->alti * (1.0 - coeff);
-	printf("alti %f\n", alti);
-	coeff = 1 - (alti - hub->map->min_y) / (hub->map->max_y - hub->map->min_y);
-
-	color = coeff * 0xFFFFFF;
-	printf("%d\n", color);
-	return (color);
+	coeff = alti / hub->map->max_y;
+	return (pick_color(hub, line, coeff));
 }
-
-/*
-color = yui((1 - ((a - hub->map->min_y) / (double)(hub->map->max_y - hub->map->min_y))) * 0.8 + 0.1);
-static int		yui(double n)
-{
-	if (n < 1.0/3.0)
-	{
-		return (int)(0xFF0000 * (n * 2.0)) & 0xFF0000;
-	}
-	else if (n < 2.0 / 3.0)
-	{
-		return ((int)((int)(0x00FF00 * ((n - 1.0/3.0) * 2.0)) & 0x00FF00) | (int)((int)(0xFF0000 * (1.0 - (n - 1.0/3.0) * 2.0)) & 0xFF0000));
-	}
-	else
-	{
-		return ((int)((int)(0x0000FF * ((n - 2.0/3.0) * 3.0)) & 0x0000FF) | (int)((int)(0x00FF00 * (1.0 - (n - 2.0/3.0) * 2.0)) & 0x00FF00));
-	}
-
-}
-
-int				find_color(t_vector point) //
-{
-	if (point.level == 1)
-		return (PASTEL_DARK_BLUE);
-	if (point.level == 2)
-		return (PASTEL_BLUE);
-	if (point.level > 2 && point.level <= 5)
-		return (MEDIUM_GRAY);
-	if (point.level > 50)
-		return (PASTEL_RED);
-	return (MEDIUM_GRAY);
-}
-
-*/
-

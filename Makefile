@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/14 11:23:41 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/14 15:22:02 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/draw_line.c				\
 						$(SRCSDIR)/text_ui.c				\
 						$(SRCSDIR)/colors.c					\
+						$(SRCSDIR)/themes.c					\
 						$(SRCSDIR)/map_altitudes.c			\
 						$(SRCSDIR)/world_to_screen.c		\
 						$(SRCSDIR)/misc_hooks.c				\

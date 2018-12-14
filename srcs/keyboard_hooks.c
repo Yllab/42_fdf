@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 13:02:02 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 16:08:33 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,15 @@ static void		hook_3(int keycode, t_hub *hub)
 	if (keycode == END_KEY)
 		transform_map(hub->map, 0, -0.03);
 	if (keycode == K1_KEY)
-		hub->map->gradient = 1;
+		theme_cafe(&(hub->theme));
 	if (keycode == K2_KEY)
-		hub->map->gradient = 2;
+		theme_red(&(hub->theme));
 	if (keycode == K3_KEY)
-		hub->map->gradient = 3;
+		theme_pink(&(hub->theme));
 	if (keycode == K4_KEY)
-		hub->map->gradient = 4;
+		theme_catalog(&(hub->theme));
 	if (keycode == K5_KEY)
-		hub->map->gradient = 5;
+		theme_purple(&(hub->theme));
 }
 
 static void		hook_4(int keycode, t_hub *hub)

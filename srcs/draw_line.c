@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:34:49 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 13:52:54 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:33:34 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ static void		img_update(t_hub *hub, t_line *line, int x, int y)
 {
 	int			color;
 
-//	color = hub->img.night_mode ? LIGHT_GRAY : DARK_GRAY;
 	if (x < hub->img.win_width &&
 		y < hub->img.win_height &&
 		x > 0 && y > 0)
 	{
-		color = pixel_color(hub, line, x, y);
+		color = pixel_color(hub, line, x);
 		ft_memmove(&(hub->img.data[(y * hub->img.line_size) + (x * 4)]),
 						&color, sizeof(int));
 	}

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 12:50:33 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:57:10 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,14 @@ void				transform_map(t_map *map,
 									float delta_elevation,
 									float delta_scale);
 
-void				map_assign_alti(t_map *map,
-										int granularity);
+void				map_assign_alti(t_map *map);
 
 void				render(t_hub *hub);
 void				world_to_screen(t_hub *hub);
 void				draw_line(t_hub *hub, t_vector p1, t_vector p2);
 
 int					find_color(t_vector point);
-int					pixel_color(t_hub *hub, t_line *line, int x, int y);
+int					pixel_color(t_hub *hub, t_line *line, int x);
 void				img_set_background(t_img *img);
 
 void				draw_ui(t_img *img, t_win *win);

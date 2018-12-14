@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 13:01:41 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:53:03 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void			startup_map(t_map *map)
 	map->t.scale_x = 0;
 	map->t.scale_z = 0;
 	map->t.scale_y = 0;
-	transform_map(map, 1, 1);
+	transform_map(map, 0.1, 1);
 }
 
 void			startup_scene(t_hub *hub)
@@ -79,8 +79,9 @@ void			startup_scene(t_hub *hub)
 	hub->camera.projection = 1;
 	hub->camera.fullrender = 1;
 	hub->camera.autorotate = 1;
-	map_assign_alti(hub->map, 1);
+	map_assign_alti(hub->map);
 
+	theme_purple(&(hub->theme));
 	hub->img.background_color = PASTEL_WHITE;
 	hub->img.night_mode = 1;
 	hub->img.show_ui = 0;

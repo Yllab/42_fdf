@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:14:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 11:33:22 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:07:16 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ typedef struct		s_map
 	t_vector		**points;
 	int				width;
 	int				height;
-	int				gradient;
-	int				granularity; //
 	double			min_y;
 	double			max_y;
 }					t_map;
@@ -119,6 +117,16 @@ typedef struct		s_ui
 	int				line_increment;
 }					t_ui;
 
+typedef struct		s_theme
+{
+	int				deep_sea;
+	int				sea;
+	int				plains_low;
+	int				plains_high;
+	int				mountain_low;
+	int				mountain_high;
+}					t_theme;
+
 /*
 ** Main access structure
 */
@@ -128,6 +136,7 @@ typedef struct		s_hub
 	t_win			win;
 	t_img			img;
 	t_camera		camera;
+	t_theme			theme;
 	t_map			*map;
 }					t_hub;
 
