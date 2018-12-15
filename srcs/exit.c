@@ -6,20 +6,15 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 13:30:50 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 14:49:27 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 21:07:22 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "fdf.h"
 
-void			free_input_row(void *row, size_t row_size)
-{
-	ft_memdel(&row);
-	row_size = 0;
-}
-
-static void		fdf_close(char *msg)
+void			fdf_close(char *msg)
 {
 	if (msg)
 	{
@@ -27,18 +22,42 @@ static void		fdf_close(char *msg)
 		ft_putendl(msg);
 		exit(EXIT_FAILURE);
 	}
-		exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
-void			fdf_input_exit(t_map *map, t_list *map_raw, char *msg)
+void			free_points(t_vector **points, t_map *map)
 {
-	ft_lstdel(&map_raw, &free_input_row);
-	map = NULL;
-	fdf_close(msg);
+	int			i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		if (points[i])
+		{
+			free(points[i]);
+			points[i] = NULL;
+		}
+		i++;
+	}
+	free(points);
+	points = NULL;
 }
 
-void			fdf_window_exit(t_hub *hub, char *msg)
+void			fdf_exit(t_hub *hub, char *msg)
 {
-	hub = NULL;
+	if (hub->map)
+	{
+		if (hub->map->points)
+			free_points(hub->map->points, hub->map);
+		free(hub->map);
+	}
+	if (hub->win.mlx_id)
+		free(hub->win.mlx_id);
+	if (hub->win.self_id)
+		free(hub->win.self_id);
+	if (hub->img.self_id)
+		free(hub->img.self_id);
+	if (hub->img.data)
+		free(hub->img.data);
 	fdf_close(msg);
 }

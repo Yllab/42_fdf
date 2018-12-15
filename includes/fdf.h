@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 14:59:22 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 20:13:36 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # include "types.h"
 
-# define BUFF_SIZE 128
+# define BUFF_SIZE 2048
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 800
 
@@ -29,8 +29,7 @@ void				matrix_print(t_matrix m);
 
 //END DEBUG
 
-void				build_map(int fd, t_hub *hub);
-t_list				*get_input(int fd, t_map *map);
+void				build_map(int fd1, char *filename, t_hub *hub);
 int					get_next_line(const int fd, char **line);
 
 void				start_window(t_hub *hub);
@@ -68,8 +67,9 @@ void				img_set_background(t_img *img);
 
 void				draw_ui(t_img *img, t_win *win);
 
-void				fdf_window_exit(t_hub *hub, char *msg);
-void				fdf_input_exit(t_map *map, t_list *map_raw, char *msg);
+void				fdf_exit(t_hub *hub, char *msg);
+void				fdf_close(char *msg);
+
 void				free_input_row(void *row, size_t row_size);
 
 #endif

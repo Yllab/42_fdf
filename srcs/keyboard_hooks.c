@@ -39,7 +39,7 @@ static void		hook_1(int keycode, t_camera *camera, int scale, t_hub *hub)
 static void		hook_2(int keycode, t_hub *hub)
 {
 	if (keycode == ESC_KEY)
-		fdf_window_exit(hub, NULL);
+		fdf_exit(hub, NULL);
 	if (keycode == MN_KEY)
 	{
 		hub->camera.speed -= hub->map->width;
