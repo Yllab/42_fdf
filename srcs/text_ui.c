@@ -29,7 +29,7 @@ static void			draw_ui_3(t_win *win, t_ui *ui)
 			ui->color, "Arrows   -- Rotation");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "WASD/QE  -- Move");
+			ui->color, "WASDQE  -- Move");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "CAMERA");
