@@ -13,7 +13,13 @@
 #include "fdf.h"
 #include "keys.h"
 
-static void		create_img(t_win *win, t_img *img)
+static void		get_window_size(t_hub *hub)
+{
+	hub->img.win_width = WIN_WIDTH;
+	hub->img.win_height = WIN_HEIGHT;
+}
+
+static void		create_img(t_hub *hub, t_win *win, t_img *img)
 {
 	img->self_id = mlx_new_image(win->mlx_id,
 									img->win_width,
@@ -25,16 +31,10 @@ static void		create_img(t_win *win, t_img *img)
 										&(img->line_size),
 										&(img->endian));
 		if (!img->data)
-			exit(1);
+			fdf_exit(hub, "Could not allocate image data.");
 	}
 	else
-		exit(1);
-}
-
-static void		find_window_size(t_hub *hub)
-{
-	hub->img.win_width = 1000;
-	hub->img.win_height = 1000;
+		fdf_exit(hub, "Could not allocate image."); 
 }
 
 static void		create_window(t_hub *hub)
@@ -42,34 +42,27 @@ static void		create_window(t_hub *hub)
 	hub->win.mlx_id = mlx_init();
 	if (hub->win.mlx_id)
 	{
-		find_window_size(hub);
+		get_window_size(hub);
 		hub->win.self_id = mlx_new_window(hub->win.mlx_id,
 											hub->img.win_width,
 											hub->img.win_height,
 											"fdf");
 		if (hub->win.self_id)
-			create_img(&(hub->win), &(hub->img));
+			create_img(hub, &(hub->win), &(hub->img));
 		else
-			exit(1);
+			fdf_exit(hub, "Could not allocate window.");
 	}
 	else
-		exit(1);
+		fdf_exit(hub, "Could not allocate MLX.");
 }
 
 void			start_window(t_hub *hub)
 {
 	create_window(hub);
-	if (hub->win.mlx_id && hub->win.self_id)
-	{
-		startup_scene(hub);
-		render(hub);
-		mlx_hook(hub->win.self_id,
-					KEYPRESS,
-					KEYPRESSMASK,
-					&keyboard_hooks,
-					hub);
-		mlx_loop_hook (hub->win.mlx_id, &loop_hook, hub);
-		mlx_loop(hub->win.mlx_id);
-		exit (1);
-	}
+	startup_scene(hub);
+	render(hub);
+	mlx_hook(hub->win.self_id, KEYPRESS, KEYPRESSMASK, &keyboard_hooks, hub);
+	mlx_loop_hook (hub->win.mlx_id, &loop_hook, hub);
+	mlx_loop(hub->win.mlx_id);
+	fdf_exit(hub, "Fatal error with MLX loop.");
 }

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/12 16:11:08 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 13:57:57 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,18 @@ int			main(int argc, char **argv)
 	{
 		if ((fd = open(argv[1], O_RDONLY)) != -1)
 		{
+			ft_bzero(&hub, sizeof(t_hub));
 			hub.map = build_map(fd);
-			if (hub.map)
-				start_window(&hub);
-			exit(1);
+			start_window(&hub);
 		}
 		else
-			exit(1);
+			fdf_exit(&hub, "Map does not exist or could not be read.");
 	}
 	else
 	{
-		ft_putstr("Input file not provided / Read error\n");
-		ft_putstr("Usage : ~~/fdf [map.fdf]\n");
-		ft_putstr("(Note : map.fdf must contain only integers separated by\n");
-		ft_putstr(" a single space. Map must be rectangular.)\n");
+		ft_putendl("Usage : fdf [map.fdf]");
+		ft_putstr("(Note : map.fdf should contain only integers separated");
+		ft_putstr(" by a single space. Map must be rectangular.)\n");
 		return (0);
 	}
 }

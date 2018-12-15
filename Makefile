@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/14 15:22:02 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/15 13:35:20 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/map_altitudes.c			\
 						$(SRCSDIR)/world_to_screen.c		\
 						$(SRCSDIR)/misc_hooks.c				\
+						$(SRCSDIR)/exit.c					\
 						$(SRCSDIR)/debug.c
 
 OBJSDIR   			=	objs

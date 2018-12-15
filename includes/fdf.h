@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 15:57:10 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 13:52:32 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "libft.h"
 # include "types.h"
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 128
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 800
 
 //DEBUG
 
@@ -65,5 +67,7 @@ int					pixel_color(t_hub *hub, t_line *line, int x);
 void				img_set_background(t_img *img);
 
 void				draw_ui(t_img *img, t_win *win);
+
+void				fdf_exit(t_hub *hub, char *msg);
 
 #endif
