@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/16 00:25:52 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/16 00:31:14 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ $(OBJS)				: 	$(OBJSDIR)/%.o : $(SRCSDIR)/%.c
 clean				:
 						rm -f $(OBJS)
 						rm -f $(DEPENDENCIES)
+						rm -rf $(OBJSDIR)
 						make clean -C minilibx_macos/
 						make clean -C libft/
 
