@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:43:40 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 22:25:30 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:27:31 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		fill_row(t_map *map, t_hub *hub, char *line, int z)
 	}
 	tabfree(split);
 	if (i != map->width)
-		fdf_exit(hub, "Map is not a rectangle.");
+		fdf_exit(hub, "Map is not a rectangle or line.");
 }
 
 static void		get_input(int fd, t_map *map, t_hub *hub)
