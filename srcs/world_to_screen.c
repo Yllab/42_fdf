@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 09:03:37 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 17:53:11 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:35:57 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static void			pt_to_canvas(t_vector *point, t_camera *cam)
 {
 	vect_mat_mul(point, cam->t.matrix);
-
 	if (cam->proj == 1)
 	{
 		point->x /= -point->z;
@@ -65,7 +64,7 @@ static void			pt_draw(t_vector *point, t_hub *hub, int z, int x)
 
 void				world_to_screen(t_hub *hub)
 {
-	int 			x;
+	int				x;
 	int				z;
 	t_vector		point;
 

@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 15:42:28 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:30:39 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 #include "colors.h"
 #include "types.h"
 
-//debug
-#include "fdf.h"
 void			img_set_background(t_img *img)
 {
 	int			i;
-	int 		j;
-	int 		max_x;
-	int 		max_y;
-	int 		color;
+	int			j;
+	int			max_x;
+	int			max_y;
+	int			color;
 
 	i = 0;
 	j = 0;

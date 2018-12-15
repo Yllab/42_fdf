@@ -1,10 +1,12 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   keyboard_hooks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/11 18:32:47 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 17:12:43 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/15 22:32:33 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/15 23:09:15 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +28,7 @@ static void		hook_1(int keycode, t_camera *camera, int scale, t_hub *hub)
 	if (keycode == DOWN_KEY)
 		camera->t.rotate_x += M_PI / 50;
 	if (keycode == I_KEY && camera->canvas > 0.1 && (camera->proj ||
-			 ((!camera->proj && (camera->canvas - 0.05 * scale > 0.1)))))
+			((!camera->proj && (camera->canvas - 0.05 * scale > 0.1)))))
 		camera->canvas -= 0.05 * (!camera->proj ? scale : 1);
 	if (keycode == K_KEY && camera->canvas < 1000)
 		camera->canvas += 0.05 * (!camera->proj ? scale : 1);

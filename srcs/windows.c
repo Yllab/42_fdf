@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:23:05 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 19:39:51 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 23:08:55 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		create_img(t_hub *hub, t_win *win, t_img *img)
 			fdf_exit(hub, "Could not allocate image data.");
 	}
 	else
-		fdf_exit(hub, "Could not allocate image."); 
+		fdf_exit(hub, "Could not allocate image.");
 }
 
 static void		create_window(t_hub *hub)
@@ -64,7 +64,7 @@ void			start_window(t_hub *hub)
 	startup_scene(hub);
 	render(hub);
 	mlx_hook(hub->win.self_id, KEYPRESS, KEYPRESSMASK, &keyboard_hooks, hub);
-	mlx_loop_hook (hub->win.mlx_id, &loop_hook, hub);
+	mlx_loop_hook(hub->win.mlx_id, &loop_hook, hub);
 	mlx_loop(hub->win.mlx_id);
 	fdf_exit(hub, "Fatal error with MLX loop.");
 }

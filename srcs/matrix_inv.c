@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:19:21 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 12:22:14 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:32:10 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void				set_pivot(t_matrix m1, t_matrix m2)
 	int					max;
 
 	i = 0;
-
 	while (i < 4)
 	{
 		if (m1[i][i] > -0.000001 && m1[i][i] < 0.000001)
@@ -82,8 +81,8 @@ static void				set_zero(t_matrix m1, t_matrix m2, int i)
 
 static void				set_one(t_matrix m1, t_matrix m2, int i)
 {
-	int 				j;
-	float 				pivot;
+	int					j;
+	float				pivot;
 
 	pivot = m1[i][i];
 	if (pivot != 1)

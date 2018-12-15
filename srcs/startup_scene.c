@@ -1,11 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */ /*                                                        :::      ::::::::   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   startup_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 10:00:58 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 18:48:25 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/15 22:33:08 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/15 22:33:25 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +57,7 @@ void			startup_camera(t_camera *camera, t_map *map)
 	reset_canvas(camera, map);
 	camera->speed = map->scale;
 	camera->t.translate_z = (float)map->scale / 2;
-	camera->t.rotate_x = (- M_PI / 50) * 6;
+	camera->t.rotate_x = (-M_PI / 50) * 6;
 }
 
 void			startup_map(t_map *map)
