@@ -68,7 +68,6 @@ static void		hook_3(int keycode, t_hub *hub)
 	if (keycode == P_KEY)
 	{
 		hub->camera.proj = hub->camera.proj ? 0 : 1;
-		startup_camera(&(hub->camera), hub->map);
 		reset_canvas(&hub->camera, hub->map);
 	}
 	if (keycode == PUP_KEY)
@@ -130,10 +129,12 @@ int				keyboard_hooks(int keycode, void *param)
 	hook_4(keycode, hub);
 	if (hub->camera.autorotate)
 		hub->camera.t.rotate_y += M_PI / 300;
+	/*
 	if (hub->camera.t.translate_x > 1000 ||
 			hub->camera.t.translate_y > 1000 ||
 			hub->camera.t.translate_z > 1000)
 		startup_camera(&(hub->camera), hub->map);
+		*/
 	render(hub);
 	return (0);
 }

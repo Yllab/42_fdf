@@ -56,7 +56,13 @@ void			startup_camera(t_camera *camera, t_map *map)
 	ft_bzero(&(camera->t), sizeof(t_transform));
 	reset_canvas(camera, map);
 	camera->speed = map->scale;
+	camera->t.translate_z = (float)map->scale / 2;
+	camera->t.rotate_x = (- M_PI / 50) * 6;
+
+	/*
 	camera->t.translate_z = (float)map->scale;
+	camera->t.rotate_x = -M_PI_2;
+	*/
 }
 
 void			startup_map(t_map *map)
@@ -64,7 +70,7 @@ void			startup_map(t_map *map)
 	map->t.scale_x = 0;
 	map->t.scale_z = 0;
 	map->t.scale_y = 0;
-	transform_map(map, 1, 1);
+	transform_map(map, 0.1, 1);
 }
 
 void			startup_scene(t_hub *hub)
@@ -73,7 +79,7 @@ void			startup_scene(t_hub *hub)
 	hub->camera.proj = 1;
 	hub->camera.fullrender = 1;
 	hub->camera.autorotate = 1;
-	theme_cafe(&(hub->theme));
+	theme_red(&(hub->theme));
 	hub->img.background_color = PASTEL_WHITE;
 	hub->img.night_mode = 1;
 	hub->img.show_ui = 0;

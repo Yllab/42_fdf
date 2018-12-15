@@ -29,10 +29,7 @@ static void			draw_ui_3(t_win *win, t_ui *ui)
 			ui->color, "Arrows   -- Rotation");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "Q / E    -- Up/Down");
-	ui->line += ui->line_increment;
-	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
-			ui->color, "WASD     -- Move");
+			ui->color, "WASD/QE  -- Move");
 	ui->line += ui->line_increment;
 	mlx_string_put(win->mlx_id, win->self_id, ui->a_x, ui->a_y + ui->line,
 			ui->color, "CAMERA");
@@ -69,7 +66,7 @@ void				draw_ui(t_img *img, t_win *win)
 	ui.a_y = img->win_height - 30;
 	ui.line = 0;
 	ui.line_increment = -20;
-	ui.color = MEDIUM_GRAY;
+	ui.color = img->night_mode ? LIGHT_GRAY : MEDIUM_GRAY;
 	if (img->show_ui)
 	{
 		mlx_string_put(win->mlx_id, win->self_id, ui.a_x, ui.a_y + ui.line,

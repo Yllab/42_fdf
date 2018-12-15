@@ -1,7 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*                                                                            */ /*                                                        :::      ::::::::   */ /*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -35,8 +33,8 @@ static void		create_img(t_win *win, t_img *img)
 
 static void		find_window_size(t_hub *hub)
 {
-	hub->img.win_width = 2560;
-	hub->img.win_height = 1400;
+	hub->img.win_width = 1000;
+	hub->img.win_height = 1000;
 }
 
 static void		create_window(t_hub *hub)
