@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:43:40 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 22:15:48 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:25:30 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 #include "libft.h"
 #include "matrix.h"
 
-static void		tabfree(char **tab, int i)
+static void		tabfree(char **tab)
 {
-	//debug
+	int			i;
+
 	i = 0;
 	while (tab[i] != NULL)
 	{
@@ -35,7 +36,6 @@ static void		fill_row(t_map *map, t_hub *hub, char *line, int z)
 	int			i;
 	char		**split;
 
-
 	map->points[z] = (t_vector*)ft_memalloc(sizeof(t_vector) * map->width);
 	split = ft_strsplit(line, ' ');
 	if (!map->points[z] || !split)
@@ -49,7 +49,7 @@ static void		fill_row(t_map *map, t_hub *hub, char *line, int z)
 		map->points[z][i].w = 1;
 		i++;
 	}
-	tabfree(split, i - 1);
+	tabfree(split);
 	if (i != map->width)
 		fdf_exit(hub, "Map is not a rectangle.");
 }
@@ -89,7 +89,7 @@ static void		get_map_size(int fd, t_map *map, t_hub *hub)
 			i = 0;
 			while (get_map_width[i++])
 				map->width++;
-			tabfree(get_map_width, i--);
+			tabfree(get_map_width);
 		}
 		map->height++;
 		ft_strdel(&line);
