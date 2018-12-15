@@ -136,10 +136,6 @@ int				keyboard_hooks(int keycode, void *param)
 		hub->camera.t.translate_z > 1000 ||
 		hub->camera.t.translate_z < -1000)
 		startup_camera(&(hub->camera), hub->map);
-	//debug
-	printf("%f %f %f\n", hub->camera.t.translate_x,
-	hub->camera.t.translate_y,
-	hub->camera.t.translate_z);
 	render(hub);
 	return (0);
 }

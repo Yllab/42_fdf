@@ -58,11 +58,6 @@ void			startup_camera(t_camera *camera, t_map *map)
 	camera->speed = map->scale;
 	camera->t.translate_z = (float)map->scale / 2;
 	camera->t.rotate_x = (- M_PI / 50) * 6;
-
-	/*
-	camera->t.translate_z = (float)map->scale;
-	camera->t.rotate_x = -M_PI_2;
-	*/
 }
 
 void			startup_map(t_map *map)
