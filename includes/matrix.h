@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 23:45:30 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/10 10:28:35 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:09:04 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@
 
 void				matrix_init(t_matrix m);
 void				matrix_copy(t_matrix m1, const t_matrix m2);
-
 void				matrix_mul(t_matrix m1, const t_matrix m2);
 void				matrix_inv(t_matrix m1);
 void				matrix_apply(t_matrix m,
 					t_vector **points, int width, int height);
-
 void				matrix_rotate_x(t_matrix m, double theta);
 void				matrix_rotate_y(t_matrix m, double theta);
 void				matrix_rotate_z(t_matrix m, double theta);

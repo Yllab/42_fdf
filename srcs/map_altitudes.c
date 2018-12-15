@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/15 22:32:22 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 22:32:23 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/15 23:36:00 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/15 23:36:36 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 #include <math.h>
+#include "fdf.h"
 
 static void			map_find_range(t_map *map)
 {

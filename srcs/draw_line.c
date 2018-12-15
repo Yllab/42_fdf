@@ -6,11 +6,12 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 18:34:49 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 19:39:34 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:13:51 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include "libft.h"
 #include "fdf.h"
 #include "colors.h"
 

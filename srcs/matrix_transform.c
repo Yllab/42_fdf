@@ -6,11 +6,11 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 22:58:13 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:20:52 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:04:01 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "types.h"
 #include "matrix.h"
 
 void					matrix_translate(t_matrix m, float x, float y, float z)

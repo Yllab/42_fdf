@@ -6,12 +6,12 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 14:54:20 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/09 18:52:30 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:03:05 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "fdf.h"
+#include "types.h"
 #include "matrix.h"
 
 void			matrix_rotate_x(t_matrix m, double theta)

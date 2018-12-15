@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:37:57 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 22:30:39 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 23:49:08 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ void			img_set_background(t_img *img)
 	int			max_y;
 	int			color;
 
-	i = 0;
-	j = 0;
 	max_x = img->win_width;
 	max_y = img->win_height;
 	if (img->night_mode)
 		color = DARK_GRAY;
 	else
 		color = img->background_color;
+	i = 0;
 	while (i < max_y)
 	{
 		j = 0;

@@ -6,11 +6,11 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 18:27:51 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/11 18:11:53 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:06:15 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "types.h"
 
 void			vect_mat_mul(t_vector *v1, const t_matrix m)
 {

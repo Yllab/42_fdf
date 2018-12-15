@@ -6,11 +6,12 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 22:32:33 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 23:09:15 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:18:07 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <stdlib.h>
 #include "fdf.h"
 #include "keys.h"
 #include "colors.h"
@@ -130,12 +131,12 @@ int				keyboard_hooks(int keycode, void *param)
 	hook_4(keycode, hub);
 	if (hub->camera.autorotate)
 		hub->camera.t.rotate_y += M_PI / 300;
-	if (hub->camera.t.translate_x > 1000 ||
-		hub->camera.t.translate_x < -1000 ||
-		hub->camera.t.translate_y > 1000 ||
-		hub->camera.t.translate_y < -1000 ||
-		hub->camera.t.translate_z > 1000 ||
-		hub->camera.t.translate_z < -1000)
+	if (hub->camera.t.translate_x > 10000 ||
+		hub->camera.t.translate_x < -10000 ||
+		hub->camera.t.translate_y > 10000 ||
+		hub->camera.t.translate_y < -10000 ||
+		hub->camera.t.translate_z > 10000 ||
+		hub->camera.t.translate_z < -10000)
 		startup_camera(&(hub->camera), hub->map);
 	render(hub);
 	return (0);

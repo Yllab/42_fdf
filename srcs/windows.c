@@ -6,11 +6,10 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:23:05 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 23:08:55 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 23:43:17 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "mlx.h"
 #include "fdf.h"
 #include "keys.h"

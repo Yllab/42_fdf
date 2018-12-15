@@ -6,7 +6,7 @@
 #    By: hbally <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/30 09:24:07 by hbally            #+#    #+#              #
-#    Updated: 2018/12/15 22:48:07 by hbally           ###   ########.fr        #
+#    Updated: 2018/12/16 00:07:56 by hbally           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ SRCS			   :=	$(SRCSDIR)/main.c					\
 						$(SRCSDIR)/map_altitudes.c			\
 						$(SRCSDIR)/world_to_screen.c		\
 						$(SRCSDIR)/misc_hooks.c				\
-						$(SRCSDIR)/exit.c					\
-						$(SRCSDIR)/debug.c
+						$(SRCSDIR)/exit.c
 
 OBJSDIR   			=	objs
 
@@ -49,14 +48,14 @@ DEPENDENCIES		= 	$(OBJS:%.o=%.d)
 
 INCLUDES			=   -I libft/includes 					\
 						-I includes							\
-						-I minilibx_macos					\
+						-I minilibx_macos
 
 LIBS				=	-L libft/ -lft						\
 						-L minilibx_macos/ -lmlx 			\
 						-framework OpenGL					\
 						-framework AppKit
 
-CFLAGS			   +=	-Wall -Werror -Wextra -g
+CFLAGS			   +=	-Wall -Werror -Wextra
 
 CC					=	gcc
 

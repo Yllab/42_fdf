@@ -6,25 +6,14 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 13:30:50 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 23:31:47 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 00:14:13 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 #include "fdf.h"
 #include "mlx.h"
-
-void			fdf_close(char *msg)
-{
-	if (msg)
-	{
-		ft_putstr("Error : ");
-		ft_putendl(msg);
-		exit(EXIT_FAILURE);
-	}
-	exit(EXIT_SUCCESS);
-}
 
 void			free_points(t_vector **points, t_map *map)
 {
@@ -42,6 +31,17 @@ void			free_points(t_vector **points, t_map *map)
 	}
 	free(points);
 	points = NULL;
+}
+
+void			fdf_close(char *msg)
+{
+	if (msg)
+	{
+		ft_putstr("Error : ");
+		ft_putendl(msg);
+		exit(EXIT_FAILURE);
+	}
+	exit(EXIT_SUCCESS);
 }
 
 void			fdf_exit(t_hub *hub, char *msg)
