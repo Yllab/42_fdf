@@ -42,7 +42,7 @@ static void				set_pivot(t_matrix m1, t_matrix m2)
 		if (m1[i][i] > -0.000001 && m1[i][i] < 0.000001)
 		{
 			max = i;
-			j = 0;
+			j = i;
 			while (j < 4)
 			{
 				if (fabs((double)m1[j][i]) > fabs((double)m1[max][i]))

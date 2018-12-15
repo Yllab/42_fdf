@@ -80,7 +80,7 @@ void				world_to_screen(t_hub *hub)
 			pt_to_canvas(&point, &(hub->camera));
 			if (hub->camera.fullrender ||
 					!((double)fabs(point.x) > hub->camera.canvas / 2 ||
-						(double)fabs(point.y) > hub->camera.canvas / 2))
+					(double)fabs(point.y) > hub->camera.canvas / 2))
 			{
 				pt_to_screen(&point, &(hub->camera), &(hub->img));
 				pt_draw(&point, hub, z, x);

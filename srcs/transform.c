@@ -24,19 +24,26 @@ void				transform_build(t_transform *t)
 	matrix_copy(t->matrix, m);
 }
 
-void				transform_build_world(t_transform *t)
+void				transform_build_world(t_transform *t, t_camera *camera)
 {
 	t_matrix		m;
 
 	matrix_init(m);
-	matrix_translate(m, t->translate_x, t->translate_y, t->translate_z);
+	if (camera->proj == 0)
+		matrix_translate(m, t->translate_x,
+							t->translate_y,
+							camera->iso_depth);
+	else
+		matrix_translate(m, t->translate_x,
+							t->translate_y,
+							t->translate_z);
 	matrix_rotate(m, t->rotate_x, t->rotate_y, t->rotate_z);
 	matrix_scale(m, t->scale_x, t->scale_y, t->scale_z);
 	matrix_copy(t->matrix, m);
 }
 
 void				transform_apply(t_transform *t,
-					t_vector **points, int width, int height)
+									t_vector **points, int width, int height)
 {
 	int				i;
 	int				j;

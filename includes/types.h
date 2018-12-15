@@ -69,6 +69,7 @@ typedef struct		s_camera
 	float			speed;
 	int				fullrender;
 	int				autorotate;
+	float			iso_depth;
 }					t_camera;
 
 /*

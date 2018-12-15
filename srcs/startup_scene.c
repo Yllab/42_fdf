@@ -1,6 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                                            */ /*                                                        :::      ::::::::   */
 /*   startup_scene.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
@@ -70,10 +69,6 @@ void			startup_map(t_map *map)
 
 void			startup_scene(t_hub *hub)
 {
-	ft_bzero(&(hub->camera), sizeof(t_camera));
-	hub->camera.proj = 1;
-	hub->camera.fullrender = 1;
-	hub->camera.autorotate = 1;
 	theme_red(&(hub->theme));
 	hub->img.background_color = PASTEL_WHITE;
 	hub->img.night_mode = 1;
@@ -83,5 +78,10 @@ void			startup_scene(t_hub *hub)
 	hub->map->t.translate_x = (float)(-hub->map->width / 2);
 	hub->map->t.translate_z = (float)(-hub->map->height / 2);
 	startup_map(hub->map);
+	ft_bzero(&(hub->camera), sizeof(t_camera));
+	hub->camera.proj = 1;
+	hub->camera.fullrender = 1;
+	hub->camera.autorotate = 1;
+	hub->camera.iso_depth = (float)hub->map->scale / 2;
 	startup_camera(&(hub->camera), hub->map);
 }

@@ -39,7 +39,7 @@ void				vector_reset(t_vector *v);
 void				vect_mat_mul(t_vector *v1, const t_matrix m);
 
 void				transform_build(t_transform *t);
-void				transform_build_world(t_transform *t);
+void				transform_build_world(t_transform *t, t_camera *camera);
 void				transform_apply(t_transform *t,
 									t_vector **points,
 									int width,

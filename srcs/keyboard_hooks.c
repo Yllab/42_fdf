@@ -26,8 +26,8 @@ static void		hook_1(int keycode, t_camera *camera, int scale)
 		camera->t.rotate_x -= M_PI / 50;
 	if (keycode == DOWN_KEY)
 		camera->t.rotate_x += M_PI / 50;
-	if (keycode == I_KEY && camera->canvas > 0.1 &&
-			(camera->proj || ((!camera->proj && (camera->canvas - 0.05 * scale > 0.1)))))
+	if (keycode == I_KEY && camera->canvas > 0.1 && (camera->proj ||
+			 ((!camera->proj && (camera->canvas - 0.05 * scale > 0.1)))))
 		camera->canvas -= 0.05 * (!camera->proj ? scale : 1);
 	if (keycode == K_KEY && camera->canvas < 1000)
 		camera->canvas += 0.05 * (!camera->proj ? scale : 1);
@@ -51,11 +51,11 @@ static void		hook_2(int keycode, t_hub *hub)
 		hub->camera.t.translate_y += 0.01 * hub->camera.speed;
 	if (keycode == S_KEY)
 		hub->camera.t.translate_y -= 0.01 * hub->camera.speed;
-	if (keycode == E_KEY)
+	if (keycode == E_KEY && hub->camera.proj)
 		hub->camera.t.translate_z -= 0.01 * hub->camera.speed;
 	if (keycode == A_KEY)
 		hub->camera.t.translate_x -= 0.01 * hub->camera.speed;
-	if (keycode == Q_KEY)
+	if (keycode == Q_KEY && hub->camera.proj)
 		hub->camera.t.translate_z += 0.01 * hub->camera.speed;
 	if (keycode == D_KEY)
 		hub->camera.t.translate_x += 0.01 * hub->camera.speed;
