@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 15:43:40 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 20:53:01 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 22:15:48 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 
 static void		tabfree(char **tab, int i)
 {
-	while (i--)
+	//debug
+	i = 0;
+	while (tab[i] != NULL)
 	{
 		free(tab[i]);
 		tab[i] = NULL;
+		i++;
 	}
 	free(tab);
 	tab = NULL;
@@ -31,6 +34,7 @@ static void		fill_row(t_map *map, t_hub *hub, char *line, int z)
 {
 	int			i;
 	char		**split;
+
 
 	map->points[z] = (t_vector*)ft_memalloc(sizeof(t_vector) * map->width);
 	split = ft_strsplit(line, ' ');

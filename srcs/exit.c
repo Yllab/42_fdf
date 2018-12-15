@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 13:30:50 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 21:07:22 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 21:36:09 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void			fdf_close(char *msg)
 		ft_putendl(msg);
 		exit(EXIT_FAILURE);
 	}
+	while(1){}
 	exit(EXIT_SUCCESS);
 }
 
