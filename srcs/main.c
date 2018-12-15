@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:26:32 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 13:57:57 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 14:43:10 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int			main(int argc, char **argv)
 		if ((fd = open(argv[1], O_RDONLY)) != -1)
 		{
 			ft_bzero(&hub, sizeof(t_hub));
-			hub.map = build_map(fd);
+			build_map(fd, &hub);
 			start_window(&hub);
 		}
 		else
-			fdf_exit(&hub, "Map does not exist or could not be read.");
+			fdf_input_exit(NULL, NULL,
+								"Map does not exist or could not be read.");
 	}
 	else
 	{

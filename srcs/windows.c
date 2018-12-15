@@ -1,10 +1,12 @@
 /* ************************************************************************** */
-/*                                                                            */ /*                                                        :::      ::::::::   */ /*   windows.c                                          :+:      :+:    :+:   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/03 18:17:23 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/14 20:03:36 by hbally           ###   ########.fr       */
+/*   Created: 2018/12/15 14:23:05 by hbally            #+#    #+#             */
+/*   Updated: 2018/12/15 14:23:28 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +33,10 @@ static void		create_img(t_hub *hub, t_win *win, t_img *img)
 										&(img->line_size),
 										&(img->endian));
 		if (!img->data)
-			fdf_exit(hub, "Could not allocate image data.");
+			fdf_window_exit(hub, "Could not allocate image data.");
 	}
 	else
-		fdf_exit(hub, "Could not allocate image."); 
+		fdf_window_exit(hub, "Could not allocate image."); 
 }
 
 static void		create_window(t_hub *hub)
@@ -50,10 +52,10 @@ static void		create_window(t_hub *hub)
 		if (hub->win.self_id)
 			create_img(hub, &(hub->win), &(hub->img));
 		else
-			fdf_exit(hub, "Could not allocate window.");
+			fdf_window_exit(hub, "Could not allocate window.");
 	}
 	else
-		fdf_exit(hub, "Could not allocate MLX.");
+		fdf_window_exit(hub, "Could not allocate MLX.");
 }
 
 void			start_window(t_hub *hub)
@@ -64,5 +66,5 @@ void			start_window(t_hub *hub)
 	mlx_hook(hub->win.self_id, KEYPRESS, KEYPRESSMASK, &keyboard_hooks, hub);
 	mlx_loop_hook (hub->win.mlx_id, &loop_hook, hub);
 	mlx_loop(hub->win.mlx_id);
-	fdf_exit(hub, "Fatal error with MLX loop.");
+	fdf_window_exit(hub, "Fatal error with MLX loop.");
 }

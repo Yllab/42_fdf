@@ -29,3 +29,4 @@ d'erreur qui free la map et return
 > remove test rule from makefile
 > rm fdf_sample from bin/
 > remove -g CFLAGS makefile
+> remove extra headers (stdlib)

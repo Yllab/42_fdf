@@ -8,13 +8,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <math.h>
 #include "fdf.h"
 #include "keys.h"
 #include "colors.h"
 
-static void		hook_1(int keycode, t_camera *camera, int scale)
+static void		hook_1(int keycode, t_camera *camera, int scale, t_hub *hub)
 {
 	if (keycode == LSFT_KEY || keycode == RSFT_KEY)
 		camera->autorotate = camera->autorotate ? 0 : 1;
@@ -31,16 +30,16 @@ static void		hook_1(int keycode, t_camera *camera, int scale)
 		camera->canvas -= 0.05 * (!camera->proj ? scale : 1);
 	if (keycode == K_KEY && camera->canvas < 1000)
 		camera->canvas += 0.05 * (!camera->proj ? scale : 1);
-	if (keycode == ESC_KEY)
-		exit(0);
-}
-
-static void		hook_2(int keycode, t_hub *hub)
-{
 	if (keycode == N_KEY)
 		hub->img.night_mode = hub->img.night_mode == 1 ? 0 : 1;
 	if (keycode == PL_KEY)
 		hub->camera.speed += (hub->map->width + hub->map->height) / 2;
+}
+
+static void		hook_2(int keycode, t_hub *hub)
+{
+	if (keycode == ESC_KEY)
+		fdf_window_exit(hub, NULL);
 	if (keycode == MN_KEY)
 	{
 		hub->camera.speed -= hub->map->width;
@@ -123,7 +122,7 @@ int				keyboard_hooks(int keycode, void *param)
 	t_hub	*hub;
 
 	hub = (t_hub*)param;
-	hook_1(keycode, &(hub->camera), hub->map->scale);
+	hook_1(keycode, &(hub->camera), hub->map->scale, hub);
 	hook_2(keycode, hub);
 	hook_3(keycode, hub);
 	hook_4(keycode, hub);

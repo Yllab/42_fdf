@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 14:52:46 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 13:46:15 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 15:17:04 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,20 @@
 #include "fdf.h"
 #include "matrix.h"
 
-static void		free_row(void *row, size_t row_size)
-{
-	ft_memdel(&row);
-	row_size = 0;
-}
-
 static void		fill_map(t_map *map, t_list *map_raw)
 {
 	int			x;
 	int			y;
 	int			z;
+	t_list		*origin;
 
-	x = 0;
-	y = 0;
-	z = map->height - 1;
+	origin = map_raw;
+	z = map->height;
 	while (map_raw)
 	{
-
-		//MALLOC
-		map->points[z] = (t_vector*)malloc(sizeof(t_vector) * map->width);
-
+		map->points[--z] = (t_vector*)malloc(sizeof(t_vector) * map->width);
 		if (!(map->points[z]))
-			exit(1);
-///////////////////////////////////////////
+			fdf_input_exit(map, origin, "Map allocation failure.");
 		x = 0;
 		while (x < map->width)
 		{
@@ -50,36 +40,27 @@ static void		fill_map(t_map *map, t_list *map_raw)
 			x++;
 		}
 		map_raw = map_raw->next;
-		z--;
 	}
 }
 
-t_map			*build_map(int fd)
+void			build_map(int fd, t_hub *hub)
 {
 	t_map		*map;
 	t_list		*map_raw;
-	
-	//MALLOC
+
 	map = (t_map*)ft_memalloc(sizeof(t_map));
-	map->width = 0;
-	map->height = 0;
-	//MALLOC
-	if (map && (map_raw = get_input(fd, map)))
+	if (map && (map_raw = get_input(fd, map)) != NULL)
 	{
-		///////////////////////////////
 		if (map->height)
 		{
 			map->points = (t_vector**)malloc(sizeof(t_vector*) * map->height);
 			if (map->points)
-			{
 				fill_map(map, map_raw);
-				matrix_init(map->t.matrix);
-				ft_lstdel(&map_raw, &free_row);
-				return (map);
-			}
-			ft_lstdel(&map_raw, &free_row);
 		}
-		free(map);
 	}
-	return (NULL);
+	if (!map || !map_raw || !map->height || !map->points)
+		fdf_input_exit(map, map_raw, "Bad map format or allocation failure.");
+	ft_lstdel(&map_raw, &free_input_row);
+	matrix_init(map->t.matrix);
+	hub->map = map;
 }

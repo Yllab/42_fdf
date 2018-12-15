@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 13:25:53 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/15 13:52:32 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/15 14:59:22 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void				matrix_print(t_matrix m);
 
 //END DEBUG
 
-t_map				*build_map(int fd);
+void				build_map(int fd, t_hub *hub);
 t_list				*get_input(int fd, t_map *map);
 int					get_next_line(const int fd, char **line);
 
@@ -68,6 +68,8 @@ void				img_set_background(t_img *img);
 
 void				draw_ui(t_img *img, t_win *win);
 
-void				fdf_exit(t_hub *hub, char *msg);
+void				fdf_window_exit(t_hub *hub, char *msg);
+void				fdf_input_exit(t_map *map, t_list *map_raw, char *msg);
+void				free_input_row(void *row, size_t row_size);
 
 #endif
