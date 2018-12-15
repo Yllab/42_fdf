@@ -19,7 +19,6 @@ void				render(t_hub *hub)
 	ft_bzero(hub->img.data, hub->img.line_size * hub->img.win_height);
 	img_set_background(&(hub->img));
 	transform_build_world(&(hub->camera.t), &(hub->camera));
-	printf("------------INV CAM ---------\n");
 	matrix_inv(hub->camera.t.matrix);
 	world_to_screen(hub);
 	mlx_put_image_to_window(hub->win.mlx_id, hub->win.self_id,
