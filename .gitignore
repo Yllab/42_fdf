@@ -55,5 +55,6 @@ dkms.conf
 # Vi recovery files
 *.swp
 
-#FDF Maps
+#FDF
 *.fdf
+42MapGenerator/*
