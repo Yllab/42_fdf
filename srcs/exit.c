@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 13:30:50 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/16 01:30:28 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 01:33:07 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void			fdf_exit(t_hub *hub, char *msg)
 		hub->win.self_id != NULL &&
 		hub->img.self_id != NULL &&
 		hub->img.data != NULL)
-	mlx_destroy_image(hub->win.mlx_id, hub->img.self_id);
+		mlx_destroy_image(hub->win.mlx_id, hub->img.self_id);
 	fdf_close(msg);
 }
