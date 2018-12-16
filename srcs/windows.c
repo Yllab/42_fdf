@@ -6,7 +6,7 @@
 /*   By: hbally <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:23:05 by hbally            #+#    #+#             */
-/*   Updated: 2018/12/16 01:29:02 by hbally           ###   ########.fr       */
+/*   Updated: 2018/12/16 01:32:28 by hbally           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		create_img(t_hub *hub, t_win *win, t_img *img)
 		if (!img->data)
 			fdf_exit(hub, "Could not allocate image data.");
 	}
-//	else
+	else
 		fdf_exit(hub, "Could not allocate image.");
 }
 
